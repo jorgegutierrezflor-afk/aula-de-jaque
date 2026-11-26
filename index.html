@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf7ee">
+  <meta name="description" content="Aprende ajedrez jugando en el Aula de Jaque del CEIP Vicente Tofiño.">
+  <title>Aula de Jaque – CEIP Vicente Tofiño</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="ajedrez.js" defer></script>
+  <script src="aula.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="contenedor header-inner">
+      <a href="#inicio" class="brand">
+        <span class="brand-icon chess" aria-hidden="true">♞</span>
+        <span><strong>Aula de Jaque</strong><small>CEIP Vicente Tofiño</small></span>
+      </a>
+      <nav class="header-nav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#minijuegos">Minijuegos</a>
+        <a href="#recursos">Para docentes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+    <section id="inicio" class="vista">
+      <div class="contenedor">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow"><span aria-hidden="true">✦</span> Ajedrez en Primaria</p>
+            <h1 tabindex="-1">Aprende ajedrez <em>jugando.</em></h1>
+            <p class="hero-intro">Descubre cómo se mueven las piezas, encuentra casillas y practica a tu ritmo con minijuegos de ajedrez.</p>
+            <a class="button primary" href="#minijuegos">Empezar a jugar <span aria-hidden="true">→</span></a>
+          </div>
+          <figure class="hero-art">
+            <img src="assets/piezas.webp" width="1200" height="902" alt="Caballo naranja y torre de marfil sobre un tablero de ajedrez">
+          </figure>
+        </div>
+
+        <section class="explore" aria-labelledby="explora">
+          <h2 id="explora">Explora el aula</h2>
+          <div class="tiles">
+            <a class="tile tile-sage" href="#aprende">
+              <span class="tile-icon chess" aria-hidden="true">♟</span>
+              <span class="tile-arrow" aria-hidden="true">↗</span>
+              <span class="tile-title">Aprende a jugar</span>
+              <span class="tile-desc">Conoce el tablero y da tus primeros pasos.</span>
+            </a>
+            <a class="tile tile-feature" href="#minijuegos">
+              <span class="tile-icon chess" aria-hidden="true">♞</span>
+              <span class="tile-arrow" aria-hidden="true">↗</span>
+              <span class="tile-title">Minijuegos interactivos</span>
+              <span class="tile-desc">Practica con el caballo, la torre y las coordenadas.</span>
+            </a>
+            <a class="tile tile-rose" href="#reto">
+              <span class="tile-icon" aria-hidden="true">✦</span>
+              <span class="tile-arrow" aria-hidden="true">↗</span>
+              <span class="tile-title">Reto de la semana</span>
+              <span class="tile-desc">Resuelve un desafío en clase.</span>
+            </a>
+            <a class="tile tile-lavender" href="#monitores">
+              <span class="tile-icon" aria-hidden="true">⚑</span>
+              <span class="tile-arrow" aria-hidden="true">↗</span>
+              <span class="tile-title">Escuela de monitores</span>
+              <span class="tile-desc">Ayuda a tus compañeros a aprender.</span>
+            </a>
+            <a class="tile tile-blue" href="#recursos">
+              <span class="tile-icon icon-sheet" aria-hidden="true"><i></i></span>
+              <span class="tile-arrow" aria-hidden="true">↗</span>
+              <span class="tile-title">Recursos para docentes</span>
+              <span class="tile-desc">Lleva los minijuegos a la pizarra y al aula.</span>
+            </a>
+            <a class="tile tile-gold" href="#torneos">
+              <span class="tile-icon chess" aria-hidden="true">♛</span>
+              <span class="tile-arrow" aria-hidden="true">↗</span>
+              <span class="tile-title">Torneos escolares</span>
+              <span class="tile-desc">Prepara un encuentro amistoso en el cole.</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="minijuegos" class="vista inner-page contenedor" hidden>
+      <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
+      <h1 tabindex="-1">Minijuegos <em>interactivos</em></h1>
+      <p class="page-lead">Elige un juego y supera cinco rondas. Puedes volver a intentarlo tantas veces como quieras.</p>
+      <div class="tiles game-tiles">
+        <a class="tile tile-rose" href="#caballo">
+          <span class="tile-icon chess" aria-hidden="true">♞</span>
+          <span class="tile-title">El salto del caballo</span>
+          <span class="tile-desc">Avanza en forma de L y descubre dónde puede aterrizar.</span>
+          <span class="tile-action">Jugar <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="tile tile-sage" href="#torre">
+          <span class="tile-icon chess" aria-hidden="true">♜</span>
+          <span class="tile-title">El camino de la torre</span>
+          <span class="tile-desc">Muévete en línea recta por una fila o una columna.</span>
+          <span class="tile-action">Jugar <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="tile tile-gold" href="#coordenadas">
+          <span class="tile-icon icon-board" aria-hidden="true"></span>
+          <span class="tile-title">Encuentra la casilla</span>
+          <span class="tile-desc">Cruza una letra y un número en el tablero.</span>
+          <span class="tile-action">Jugar <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
+
+    <section id="juego" class="vista inner-page game-page contenedor" hidden>
+      <a class="back-link" href="#minijuegos"><span aria-hidden="true">←</span> Todos los minijuegos</a>
+      <div id="partida" class="play-layout">
+        <div class="play-copy">
+          <div class="game-progress">
+            <span id="ronda">Ronda 1 de 5</span>
+            <progress id="progreso" class="sr-only" value="0" max="5" aria-label="Rondas resueltas"></progress>
+            <span id="pasos" class="steps" aria-hidden="true"></span>
+          </div>
+          <h1 id="nombre-juego" tabindex="-1"></h1>
+          <p id="instrucciones" class="page-lead"></p>
+          <p id="pregunta" class="prompt"></p>
+          <p id="mensaje" class="feedback" role="status" aria-atomic="true"></p>
+          <div class="play-actions">
+            <button type="button" class="button secondary" id="pista-boton" aria-expanded="false" aria-controls="pista">Ver pista</button>
+            <button type="button" class="button primary" id="siguiente" hidden>Siguiente ronda <span aria-hidden="true">→</span></button>
+          </div>
+          <p id="pista" class="hint" hidden></p>
+        </div>
+        <div class="play-board">
+          <div id="tablero" class="board-frame" aria-label="Tablero de ajedrez" role="group" aria-describedby="pregunta"></div>
+          <p class="board-tip">Toca una casilla o usa las flechas y pulsa Intro.</p>
+        </div>
+      </div>
+      <div id="resultado" class="result" hidden>
+        <span class="result-star" aria-hidden="true">✦</span>
+        <h1 tabindex="-1">¡Lo has conseguido!</h1>
+        <p>Has resuelto las cinco rondas. Cada jugada cuenta.</p>
+        <div class="result-actions">
+          <button type="button" class="button primary" id="reiniciar">Volver a jugar <span aria-hidden="true">↻</span></button>
+          <a href="#minijuegos" class="button secondary">Elegir otro juego</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="aprende" class="vista inner-page contenedor" hidden>
+      <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
+      <h1 tabindex="-1">Aprende a <em>jugar</em></h1>
+      <p class="page-lead">Empieza por el tablero y dos piezas que se mueven de formas muy distintas.</p>
+      <div class="tiles lesson-tiles">
+        <article class="tile tile-gold"><span class="tile-icon icon-board" aria-hidden="true"></span><h2 class="tile-title">El tablero</h2><p class="tile-desc">Tiene 8 filas y 8 columnas. Cada casilla tiene un nombre que empieza por la letra de su columna. Por ejemplo, e4 está en la columna e y la fila 4.</p><a class="tile-action" href="#coordenadas">Practicar coordenadas <span aria-hidden="true">→</span></a></article>
+        <article class="tile tile-rose"><span class="tile-icon chess" aria-hidden="true">♞</span><h2 class="tile-title">El caballo</h2><p class="tile-desc">Se mueve en L. Cuenta dos casillas en línea recta y luego una hacia un lado. Puede saltar por encima de otras piezas.</p><a class="tile-action" href="#caballo">Practicar con el caballo <span aria-hidden="true">→</span></a></article>
+        <article class="tile tile-sage"><span class="tile-icon chess" aria-hidden="true">♜</span><h2 class="tile-title">La torre</h2><p class="tile-desc">Se mueve por una sola fila o columna. Puede recorrer varias casillas seguidas si el camino está libre.</p><a class="tile-action" href="#torre">Practicar con la torre <span aria-hidden="true">→</span></a></article>
+      </div>
+    </section>
+
+    <section id="reto" class="vista inner-page contenedor" hidden>
+      <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
+      <h1 tabindex="-1">Reto de <em>la semana</em></h1>
+      <article class="activity">
+        <p class="eyebrow"><span aria-hidden="true">✦</span> Primer reto</p>
+        <h2>¿Cuántos saltos encuentras?</h2>
+        <p>Coloca un caballo en d4 de un tablero vacío. En parejas, buscad todas las casillas a las que puede llegar en un solo salto.</p>
+        <details><summary>Ver solución</summary><p>Hay ocho saltos posibles. Puede llegar a b3, b5, c2, c6, e2, e6, f3 y f5.</p></details>
+        <a class="button primary" href="#caballo">Practicar con el caballo <span aria-hidden="true">→</span></a>
+      </article>
+    </section>
+
+    <section id="monitores" class="vista inner-page contenedor" hidden>
+      <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
+      <h1 tabindex="-1">Escuela de <em>monitores</em></h1>
+      <article class="activity">
+        <h2>Enseña un salto en pareja</h2>
+        <ol>
+          <li>Demuestra el salto del caballo y cuenta en voz alta «dos y una».</li>
+          <li>Pide a tu pareja que elija una casilla y explique cómo ha contado.</li>
+          <li>Si se atasca, dale una pista. Cambiad de papel en la siguiente ronda.</li>
+        </ol>
+        <a class="button primary" href="#caballo">Abrir el juego del caballo <span aria-hidden="true">→</span></a>
+      </article>
+    </section>
+
+    <section id="recursos" class="vista inner-page contenedor" hidden>
+      <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
+      <h1 tabindex="-1">Recursos para <em>docentes</em></h1>
+      <article class="activity">
+        <h2>Una ronda en la pizarra</h2>
+        <ol>
+          <li>Proyecta un minijuego y lee la consigna con la clase.</li>
+          <li>Invita a un alumno a señalar su respuesta y a explicar cómo la encontró.</li>
+          <li>Comprueba la jugada y cede el turno a otro compañero.</li>
+        </ol>
+        <a class="button primary" href="#minijuegos">Elegir un minijuego <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="activity download-info" id="descarga-info">
+        <h2>Usa el aula en tu ordenador</h2>
+        <p>Descarga y descomprime la carpeta. Abre <strong>INICIO.html</strong> con tu navegador. Los juegos funcionan sin conexión y el archivo incluye una guía para empezar.</p>
+        <a class="button secondary" href="aula-de-jaque.zip" download>Descargar el aula (ZIP) <span aria-hidden="true">↓</span></a>
+      </article>
+    </section>
+
+    <section id="torneos" class="vista inner-page contenedor" hidden>
+      <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
+      <h1 tabindex="-1">Torneos <em>escolares</em></h1>
+      <article class="activity">
+        <h2>Prepara un encuentro amistoso</h2>
+        <ol>
+          <li>Organiza parejas y acuerda una señal para empezar y terminar.</li>
+          <li>Da tiempo para pensar y deja que cada participante haga sus propias jugadas.</li>
+          <li>Al terminar, saluda a tu pareja y comparte algo que hayas aprendido.</li>
+        </ol>
+        <a class="button primary" href="#minijuegos">Calentar con los minijuegos <span aria-hidden="true">→</span></a>
+      </article>
+    </section>
+    <noscript><p class="contenedor">Activa JavaScript en el navegador para abrir los minijuegos.</p></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="contenedor footer-inner">
+      <span><strong>Aula de Jaque</strong><span class="footer-dot" aria-hidden="true">·</span> CEIP Vicente Tofiño</span>
+      <a href="#recursos">Para docentes <span aria-hidden="true">↗</span></a>
+    </div>
+  </footer>
+</body>
+</html>
