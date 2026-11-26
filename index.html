@@ -7,8 +7,12 @@
   <meta name="description" content="Aprende ajedrez jugando en el Aula de Jaque del CEIP Vicente Tofiño.">
   <title>Aula de Jaque – CEIP Vicente Tofiño</title>
   <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="portada.css">
+  <link rel="stylesheet" href="academia.css">
   <script src="ajedrez.js" defer></script>
   <script src="aula.js" defer></script>
+  <script src="academia-contenido.js" defer></script>
+  <script src="academia.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -20,8 +24,9 @@
       </a>
       <nav class="header-nav" aria-label="Navegación principal">
         <a href="#inicio">Inicio</a>
-        <a href="#minijuegos">Minijuegos</a>
-        <a href="#recursos">Para docentes</a>
+        <a href="#mesa">Jugar</a>
+        <a href="#aprender">Aprender</a>
+        <a href="#colegio">Colegio</a>
       </nav>
     </div>
   </header>
@@ -29,63 +34,125 @@
   <main id="contenido" tabindex="-1">
     <section id="inicio" class="vista">
       <div class="contenedor">
-        <div class="hero">
+        <div class="hero aula-hero">
           <div class="hero-copy">
-            <p class="eyebrow"><span aria-hidden="true">✦</span> Ajedrez en Primaria</p>
-            <h1 tabindex="-1">Aprende ajedrez <em>jugando.</em></h1>
-            <p class="hero-intro">Descubre cómo se mueven las piezas, encuentra casillas y practica a tu ritmo con minijuegos de ajedrez.</p>
-            <a class="button primary" href="#minijuegos">Empezar a jugar <span aria-hidden="true">→</span></a>
+            <p class="eyebrow"><span aria-hidden="true">✦</span> Tu aula de ajedrez</p>
+            <h1 tabindex="-1">Cada jugada <em>cuenta.</em></h1>
+            <p class="hero-intro">Aprende a mover las piezas, supera un reto y descubre tu próxima jugada.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#minijuegos">Empezar a jugar <span aria-hidden="true">→</span></a>
+              <a class="button secondary" href="#aprende">Aprender desde cero</a>
+            </div>
           </div>
           <figure class="hero-art">
             <img src="assets/piezas.webp" width="1200" height="902" alt="Caballo naranja y torre de marfil sobre un tablero de ajedrez">
           </figure>
         </div>
 
-        <section class="explore" aria-labelledby="explora">
-          <h2 id="explora">Explora el aula</h2>
-          <div class="tiles">
-            <a class="tile tile-sage" href="#aprende">
-              <span class="tile-icon chess" aria-hidden="true">♟</span>
-              <span class="tile-arrow" aria-hidden="true">↗</span>
-              <span class="tile-title">Aprende a jugar</span>
-              <span class="tile-desc">Conoce el tablero y da tus primeros pasos.</span>
+        <section class="module-section" id="mesa" data-home-group aria-labelledby="mesa-titulo">
+          <h2 id="mesa-titulo" tabindex="-1">Mesa de juego</h2>
+          <div class="module-grid module-grid-four">
+            <a class="module-card module-highlight" href="#minijuegos" data-module data-availability="disponible">
+              <span class="module-icon chess" aria-hidden="true">♞</span>
+              <span class="module-status">Disponible</span>
+              <span class="module-name">Zona de juegos y minijuegos</span>
+              <span class="module-description">Practica con el caballo, la torre y las coordenadas.</span>
+              <span class="module-action">Elegir minijuego <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile tile-feature" href="#minijuegos">
-              <span class="tile-icon chess" aria-hidden="true">♞</span>
-              <span class="tile-arrow" aria-hidden="true">↗</span>
-              <span class="tile-title">Minijuegos interactivos</span>
-              <span class="tile-desc">Practica con el caballo, la torre y las coordenadas.</span>
+            <a class="module-card module-blue" href="#inteligencia" data-module data-availability="pendiente">
+              <span class="module-icon chess" aria-hidden="true">♜</span>
+              <span class="module-status">Pendiente</span>
+              <span class="module-name">Juega contra la inteligencia artificial</span>
+              <span class="module-description">Partidas contra el ordenador con cinco niveles.</span>
+              <span class="module-action">Ver lo previsto <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile tile-rose" href="#reto">
-              <span class="tile-icon" aria-hidden="true">✦</span>
-              <span class="tile-arrow" aria-hidden="true">↗</span>
-              <span class="tile-title">Reto de la semana</span>
-              <span class="tile-desc">Resuelve un desafío en clase.</span>
+            <a class="module-card module-green" href="#companero" data-module data-availability="desarrollo">
+              <span class="module-icon chess" aria-hidden="true">♟♟</span>
+              <span class="module-status">En desarrollo</span>
+              <span class="module-name">Reta a un compañero</span>
+              <span class="module-description">Invita a otro jugador del colegio a una partida.</span>
+              <span class="module-action">Ver estado <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile tile-lavender" href="#monitores">
-              <span class="tile-icon" aria-hidden="true">⚑</span>
-              <span class="tile-arrow" aria-hidden="true">↗</span>
-              <span class="tile-title">Escuela de monitores</span>
-              <span class="tile-desc">Ayuda a tus compañeros a aprender.</span>
+            <a class="module-card module-orange" href="#aleatoria" data-module data-availability="pendiente">
+              <span class="module-icon" aria-hidden="true">⇄</span>
+              <span class="module-status">Pendiente</span>
+              <span class="module-name">Partida aleatoria</span>
+              <span class="module-description">Encuentra un rival del colegio con quien jugar.</span>
+              <span class="module-action">Ver lo previsto <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile tile-blue" href="#recursos">
-              <span class="tile-icon icon-sheet" aria-hidden="true"><i></i></span>
-              <span class="tile-arrow" aria-hidden="true">↗</span>
-              <span class="tile-title">Recursos para docentes</span>
-              <span class="tile-desc">Lleva los minijuegos a la pizarra y al aula.</span>
+          </div>
+        </section>
+
+        <section class="module-section" id="aprender" data-home-group aria-labelledby="aprender-titulo">
+          <h2 id="aprender-titulo" tabindex="-1">Aprende y supera retos</h2>
+          <div class="module-grid module-grid-two">
+            <a class="module-card module-blue" href="#aprende" data-module data-availability="disponible">
+              <span class="module-icon icon-board" aria-hidden="true"></span>
+              <span class="module-status">3 lecciones disponibles</span>
+              <span class="module-name">Academia de ajedrez</span>
+              <span class="module-description">Explora el tablero, las coordenadas y las seis piezas.</span>
+              <span class="module-action">Dar los primeros pasos <span aria-hidden="true">→</span></span>
             </a>
-            <a class="tile tile-gold" href="#torneos">
-              <span class="tile-icon chess" aria-hidden="true">♛</span>
-              <span class="tile-arrow" aria-hidden="true">↗</span>
-              <span class="tile-title">Torneos escolares</span>
-              <span class="tile-desc">Prepara un encuentro amistoso en el cole.</span>
+            <a class="module-card module-orange" href="#reto" data-module data-availability="disponible">
+              <span class="module-icon" aria-hidden="true">✦</span>
+              <span class="module-status">Primer reto disponible</span>
+              <span class="module-name">Misiones y retos</span>
+              <span class="module-description">Resuelve el reto de la semana en pareja.</span>
+              <span class="module-action">Abrir el reto <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
+        </section>
+
+        <section class="module-section" id="colegio" data-home-group aria-labelledby="colegio-titulo">
+          <h2 id="colegio-titulo" tabindex="-1">En el colegio</h2>
+          <div class="module-grid">
+            <a class="module-card module-gold" href="#torneos" data-module data-availability="disponible">
+              <span class="module-icon chess" aria-hidden="true">♛</span>
+              <span class="module-status">Guía disponible</span>
+              <span class="module-name">Liga escolar y torneos</span>
+              <span class="module-description">Prepara un encuentro amistoso con tu clase.</span>
+              <span class="module-action">Ver la guía <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="module-card module-green" href="#monitores" data-module data-availability="disponible">
+              <span class="module-icon" aria-hidden="true">⚑</span>
+              <span class="module-status">Disponible</span>
+              <span class="module-name">Escuela de monitores</span>
+              <span class="module-description">Ayuda a tus compañeros a entender un salto del caballo.</span>
+              <span class="module-action">Ver la actividad <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="module-card" href="#recursos" data-module data-availability="disponible">
+              <span class="module-icon icon-sheet" aria-hidden="true"><i></i></span>
+              <span class="module-status">Disponible</span>
+              <span class="module-name">Rincón del docente</span>
+              <span class="module-description">Lleva los minijuegos a la pizarra y al aula.</span>
+              <span class="module-action">Ver recursos <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
+        </section>
+
+        <section class="module-section" id="mi-espacio" data-home-group aria-labelledby="espacio-titulo">
+          <h2 id="espacio-titulo" tabindex="-1">Mi espacio</h2>
+          <div class="module-grid module-grid-two">
+            <a class="module-card" href="#perfil" data-module data-availability="pendiente">
+              <span class="module-icon chess" aria-hidden="true">♙</span>
+              <span class="module-status">Pendiente</span>
+              <span class="module-name">Mi perfil</span>
+              <span class="module-description">Tu avatar, tus insignias y lo que has aprendido.</span>
+              <span class="module-action">Ver lo previsto <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="module-card module-gold" href="#tienda" data-module data-availability="pendiente">
+              <span class="module-icon" aria-hidden="true">✦</span>
+              <span class="module-status">Pendiente</span>
+              <span class="module-name">Tienda</span>
+              <span class="module-description">Personaliza el tablero y tu avatar con Monedas de Jaque.</span>
+              <span class="module-action">Ver lo previsto <span aria-hidden="true">→</span></span>
             </a>
           </div>
         </section>
       </div>
     </section>
 
-    <section id="minijuegos" class="vista inner-page contenedor" hidden>
+    <section id="minijuegos" data-nav="mesa" class="vista inner-page contenedor" hidden>
       <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
       <h1 tabindex="-1">Minijuegos <em>interactivos</em></h1>
       <p class="page-lead">Elige un juego y supera cinco rondas. Puedes volver a intentarlo tantas veces como quieras.</p>
@@ -111,7 +178,7 @@
       </div>
     </section>
 
-    <section id="juego" class="vista inner-page game-page contenedor" hidden>
+    <section id="juego" data-nav="mesa" class="vista inner-page game-page contenedor" hidden>
       <a class="back-link" href="#minijuegos"><span aria-hidden="true">←</span> Todos los minijuegos</a>
       <div id="partida" class="play-layout">
         <div class="play-copy">
@@ -146,22 +213,99 @@
       </div>
     </section>
 
-    <section id="aprende" class="vista inner-page contenedor" hidden>
-      <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
-      <h1 tabindex="-1">Aprende a <em>jugar</em></h1>
-      <p class="page-lead">Empieza por el tablero y dos piezas que se mueven de formas muy distintas.</p>
-      <div class="tiles lesson-tiles">
-        <article class="tile tile-gold"><span class="tile-icon icon-board" aria-hidden="true"></span><h2 class="tile-title">El tablero</h2><p class="tile-desc">Tiene 8 filas y 8 columnas. Cada casilla tiene un nombre que empieza por la letra de su columna. Por ejemplo, e4 está en la columna e y la fila 4.</p><a class="tile-action" href="#coordenadas">Practicar coordenadas <span aria-hidden="true">→</span></a></article>
-        <article class="tile tile-rose"><span class="tile-icon chess" aria-hidden="true">♞</span><h2 class="tile-title">El caballo</h2><p class="tile-desc">Se mueve en L. Cuenta dos casillas en línea recta y luego una hacia un lado. Puede saltar por encima de otras piezas.</p><a class="tile-action" href="#caballo">Practicar con el caballo <span aria-hidden="true">→</span></a></article>
-        <article class="tile tile-sage"><span class="tile-icon chess" aria-hidden="true">♜</span><h2 class="tile-title">La torre</h2><p class="tile-desc">Se mueve por una sola fila o columna. Puede recorrer varias casillas seguidas si el camino está libre.</p><a class="tile-action" href="#torre">Practicar con la torre <span aria-hidden="true">→</span></a></article>
+    <section id="aprende" data-nav="aprender" class="vista inner-page contenedor" hidden>
+      <div id="academia-portada">
+        <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
+        <div class="academia-cabecera">
+          <div>
+            <h1 tabindex="-1">Academia de <em>ajedrez</em></h1>
+            <p class="page-lead">Explora el tablero y conoce las seis piezas del ajedrez.</p>
+          </div>
+          <div class="academia-avance">
+            <label for="academia-progreso">Primeros pasos</label>
+            <p id="academia-progreso-texto">0 de 3 lecciones completadas</p>
+            <progress id="academia-progreso" max="3" value="0" aria-describedby="academia-progreso-texto"></progress>
+            <p class="academia-nota" id="academia-progreso-local">Tu avance se guarda en este navegador.</p>
+            <p class="academia-nota" id="academia-progreso-aviso" hidden>El navegador no pudo guardar tu avance. Puedes seguir hasta que cierres esta página.</p>
+            <p class="academia-insignia" id="academia-insignia" hidden><span aria-hidden="true">✦</span> Insignia «Primeros pasos» conseguida</p>
+          </div>
+        </div>
+
+        <div class="academia-grid" role="group" aria-label="Lecciones de primeros pasos">
+          <a class="module-card module-green academia-tarjeta" href="#aprende?leccion=tablero" data-leccion="tablero">
+            <span class="module-icon icon-board" aria-hidden="true"></span>
+            <span class="module-status" data-estado-leccion>Sin empezar</span>
+            <span class="module-name">1. El tablero</span>
+            <span class="module-description">Distingue casillas claras y oscuras y encuentra las esquinas.</span>
+            <span class="module-action">Abrir lección <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="module-card module-blue academia-tarjeta" href="#aprende?leccion=coordenadas" data-leccion="coordenadas">
+            <span class="module-icon" aria-hidden="true">a1</span>
+            <span class="module-status" data-estado-leccion>Sin empezar</span>
+            <span class="module-name">2. Las coordenadas</span>
+            <span class="module-description">Cruza una letra y un número para encontrar una casilla.</span>
+            <span class="module-action">Abrir lección <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="module-card module-orange academia-tarjeta" href="#aprende?leccion=piezas" data-leccion="piezas">
+            <span class="module-icon chess" aria-hidden="true">♞</span>
+            <span class="module-status" data-estado-leccion>Sin empezar</span>
+            <span class="module-name">3. Las piezas</span>
+            <span class="module-description">Reconoce el peón, la torre, el alfil, el caballo, la dama y el rey.</span>
+            <span class="module-action">Abrir lección <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+
+        <section class="academia-repaso" aria-labelledby="academia-repaso-titulo">
+          <h2 id="academia-repaso-titulo">Apuntes y práctica rápida</h2>
+          <div class="tiles lesson-tiles">
+            <article class="tile tile-gold"><span class="tile-icon icon-board" aria-hidden="true"></span><h3 class="tile-title">El tablero</h3><p class="tile-desc">Tiene 8 filas y 8 columnas. Cada casilla tiene un nombre que empieza por la letra de su columna. Por ejemplo, e4 está en la columna e y la fila 4.</p><a class="tile-action" href="#coordenadas">Practicar coordenadas <span aria-hidden="true">→</span></a></article>
+            <article class="tile tile-rose"><span class="tile-icon chess" aria-hidden="true">♞</span><h3 class="tile-title">El caballo</h3><p class="tile-desc">Se mueve en L. Cuenta dos casillas en línea recta y luego una hacia un lado. Puede saltar por encima de otras piezas.</p><a class="tile-action" href="#caballo">Practicar con el caballo <span aria-hidden="true">→</span></a></article>
+            <article class="tile tile-sage"><span class="tile-icon chess" aria-hidden="true">♜</span><h3 class="tile-title">La torre</h3><p class="tile-desc">Se mueve por una sola fila o columna. Puede recorrer varias casillas seguidas si el camino está libre.</p><a class="tile-action" href="#torre">Practicar con la torre <span aria-hidden="true">→</span></a></article>
+          </div>
+        </section>
+      </div>
+
+      <div id="academia-leccion" hidden>
+        <a class="back-link" href="#aprende"><span aria-hidden="true">←</span> Todas las lecciones</a>
+        <h1 id="academia-titulo" tabindex="-1"></h1>
+        <p class="page-lead" id="academia-intro"></p>
+        <div class="academia-explicacion" id="academia-explicacion"></div>
+
+        <div class="academia-actividades">
+          <section class="academia-panel" aria-labelledby="academia-ejemplo-titulo">
+            <h2 id="academia-ejemplo-titulo">Prueba guiada</h2>
+            <p class="academia-consigna" id="academia-ejemplo-consigna"></p>
+            <div class="academia-cuerpo" id="academia-ejemplo-cuerpo"></div>
+            <p class="feedback" id="academia-ejemplo-mensaje" role="status" aria-atomic="true"></p>
+          </section>
+
+          <section class="academia-panel" id="academia-practica" aria-labelledby="academia-practica-titulo">
+            <h2 id="academia-practica-titulo">Te toca</h2>
+            <p class="academia-ronda" id="academia-ronda"></p>
+            <p class="academia-consigna" id="academia-pregunta"></p>
+            <div class="academia-cuerpo" id="academia-respuestas"></div>
+            <p class="feedback" id="academia-mensaje" role="status" aria-atomic="true"></p>
+            <button class="button primary" type="button" id="academia-siguiente" hidden>Siguiente reto <span aria-hidden="true">→</span></button>
+          </section>
+
+          <section class="academia-panel academia-resultado" id="academia-resultado" hidden>
+            <span class="academia-estrella" aria-hidden="true">✦</span>
+            <h2 id="academia-resultado-titulo" tabindex="-1">¡Lección completada!</h2>
+            <p id="academia-resultado-texto"></p>
+            <div class="academia-acciones">
+              <a class="button primary" id="academia-proxima" href="#aprende">Volver a la academia</a>
+              <button class="button secondary" type="button" id="academia-repetir">Repetir la práctica</button>
+            </div>
+          </section>
+        </div>
       </div>
     </section>
 
-    <section id="reto" class="vista inner-page contenedor" hidden>
+    <section id="reto" data-nav="aprender" class="vista inner-page contenedor" hidden>
       <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
-      <h1 tabindex="-1">Reto de <em>la semana</em></h1>
+      <h1 tabindex="-1">Misiones y <em>retos</em></h1>
       <article class="activity">
-        <p class="eyebrow"><span aria-hidden="true">✦</span> Primer reto</p>
+        <p class="eyebrow"><span aria-hidden="true">✦</span> Reto de la semana</p>
         <h2>¿Cuántos saltos encuentras?</h2>
         <p>Coloca un caballo en d4 de un tablero vacío. En parejas, buscad todas las casillas a las que puede llegar en un solo salto.</p>
         <details><summary>Ver solución</summary><p>Hay ocho saltos posibles. Puede llegar a b3, b5, c2, c6, e2, e6, f3 y f5.</p></details>
@@ -169,7 +313,7 @@
       </article>
     </section>
 
-    <section id="monitores" class="vista inner-page contenedor" hidden>
+    <section id="monitores" data-nav="colegio" class="vista inner-page contenedor" hidden>
       <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
       <h1 tabindex="-1">Escuela de <em>monitores</em></h1>
       <article class="activity">
@@ -183,9 +327,9 @@
       </article>
     </section>
 
-    <section id="recursos" class="vista inner-page contenedor" hidden>
+    <section id="recursos" data-nav="colegio" class="vista inner-page contenedor" hidden>
       <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
-      <h1 tabindex="-1">Recursos para <em>docentes</em></h1>
+      <h1 tabindex="-1">Rincón del <em>docente</em></h1>
       <article class="activity">
         <h2>Una ronda en la pizarra</h2>
         <ol>
@@ -202,9 +346,10 @@
       </article>
     </section>
 
-    <section id="torneos" class="vista inner-page contenedor" hidden>
+    <section id="torneos" data-nav="colegio" class="vista inner-page contenedor" hidden>
       <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
-      <h1 tabindex="-1">Torneos <em>escolares</em></h1>
+      <h1 tabindex="-1">Liga escolar y <em>torneos</em></h1>
+      <p class="page-lead">Empieza con un encuentro amistoso. La liga y la gestión de torneos se incorporarán en la fase 5.</p>
       <article class="activity">
         <h2>Prepara un encuentro amistoso</h2>
         <ol>
@@ -215,7 +360,58 @@
         <a class="button primary" href="#minijuegos">Calentar con los minijuegos <span aria-hidden="true">→</span></a>
       </article>
     </section>
-    <noscript><p class="contenedor">Activa JavaScript en el navegador para abrir los minijuegos.</p></noscript>
+    <section id="inteligencia" class="vista inner-page contenedor" data-nav="mesa" hidden>
+      <a class="back-link" href="#mesa"><span aria-hidden="true">←</span> Mesa de juego</a>
+      <h1 tabindex="-1">Juega contra <em>la inteligencia artificial</em></h1>
+      <div class="phase-panel">
+        <p class="module-status">Pendiente · Fase 2</p>
+        <h2>Tu rival será el ordenador</h2>
+        <p>Podrás elegir entre cinco niveles y pedir pistas para aprender durante la partida. Mientras tanto, puedes practicar las piezas con los minijuegos.</p>
+        <a class="button primary" href="#minijuegos">Ir a los minijuegos <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section id="companero" class="vista inner-page contenedor" data-nav="mesa" hidden>
+      <a class="back-link" href="#mesa"><span aria-hidden="true">←</span> Mesa de juego</a>
+      <h1 tabindex="-1">Reta a <em>un compañero</em></h1>
+      <div class="phase-panel">
+        <p class="module-status">En desarrollo · Fase 4</p>
+        <h2>Una partida entre compañeros del colegio</h2>
+        <p>Ya se probó una primera versión de las salas privadas por código. Antes de abrir los retos al alumnado, el colegio revisará el acceso y las opciones de privacidad.</p>
+      </div>
+    </section>
+
+    <section id="aleatoria" class="vista inner-page contenedor" data-nav="mesa" hidden>
+      <a class="back-link" href="#mesa"><span aria-hidden="true">←</span> Mesa de juego</a>
+      <h1 tabindex="-1">Partida <em>aleatoria</em></h1>
+      <div class="phase-panel">
+        <p class="module-status">Pendiente · Fase 4</p>
+        <h2>Encuentra un rival de tu colegio</h2>
+        <p>Cuando el centro habilite este modo, podrás buscar partida entre el alumnado autorizado. El juego intentará encontrar a alguien de un nivel parecido al tuyo.</p>
+      </div>
+    </section>
+
+    <section id="perfil" class="vista inner-page contenedor" data-nav="mi-espacio" hidden>
+      <a class="back-link" href="#mi-espacio"><span aria-hidden="true">←</span> Mi espacio</a>
+      <h1 tabindex="-1">Mi <em>perfil</em></h1>
+      <div class="phase-panel">
+        <p class="module-status">Pendiente · Fase 3</p>
+        <h2>Consulta lo que vas aprendiendo</h2>
+        <p>Tu perfil reunirá el avatar, el progreso en la academia y las insignias. El profesorado gestionará el acceso cuando el centro lo autorice.</p>
+      </div>
+    </section>
+
+    <section id="tienda" class="vista inner-page contenedor" data-nav="mi-espacio" hidden>
+      <a class="back-link" href="#mi-espacio"><span aria-hidden="true">←</span> Mi espacio</a>
+      <h1 tabindex="-1">Tienda</h1>
+      <div class="phase-panel">
+        <p class="module-status">Pendiente · Fase 3</p>
+        <h2>Personaliza tu tablero y tu avatar</h2>
+        <p>Podrás conseguir artículos decorativos con las Monedas de Jaque que ganes al aprender y participar.</p>
+      </div>
+    </section>
+
+    <noscript><p class="contenedor">Activa JavaScript en el navegador para abrir las lecciones y los minijuegos.</p></noscript>
   </main>
 
   <footer class="site-footer">

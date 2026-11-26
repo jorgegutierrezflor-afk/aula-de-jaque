@@ -5,6 +5,7 @@ const byId = (id) => document.getElementById(id);
 const totalRounds = 5;
 const views = [...document.querySelectorAll(".vista")];
 const nav = [...document.querySelectorAll(".header-nav a")];
+const homeGroups = new Map([...document.querySelectorAll("[data-home-group]")].map((group) => [group.id, group]));
 const play = byId("partida");
 const result = byId("resultado");
 const board = byId("tablero");
@@ -196,18 +197,24 @@ function submit(square) {
 }
 
 function navigate(focus = true) {
-  const route = location.hash.slice(1) || "inicio";
+  const route = location.hash.slice(1).split("?", 1)[0] || "inicio";
+  const group = homeGroups.get(route);
   const isGame = Object.hasOwn(games, route);
   const view = isGame ? byId("juego") : views.find((section) => section.id === route && route !== "juego") || byId("inicio");
+  const navTarget = group?.id || view.dataset.nav || view.id;
 
   for (const section of views) section.hidden = section !== view;
   for (const link of nav) {
-    const current = link.hash === "#" + view.id || (isGame && link.hash === "#minijuegos");
-    if (current) link.setAttribute("aria-current", "page");
+    if (link.hash === "#" + navTarget) link.setAttribute("aria-current", group ? "location" : "page");
     else link.removeAttribute("aria-current");
   }
   if (isGame) start(route);
 
+  if (group) {
+    if (focus) group.querySelector("h2").focus({ preventScroll: true });
+    group.scrollIntoView({ block: "start" });
+    return;
+  }
   if (focus) {
     window.scrollTo(0, 0);
     view.querySelector("h1").focus({ preventScroll: true });

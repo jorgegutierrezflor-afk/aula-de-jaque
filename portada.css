@@ -1,0 +1,199 @@
+:root {
+  --panel-ink: #252340;
+  --panel-muted: #514e67;
+  --panel-rule: #dedbe8;
+  --panel-paper: #f6f5fa;
+  --purple: #583694;
+  --purple-dark: #3f2673;
+}
+
+body { background-color: var(--panel-paper); }
+
+.site-header {
+  background: #fff;
+  border-color: var(--panel-rule);
+}
+.brand-icon { background: var(--purple); }
+.brand strong { color: var(--panel-ink); }
+.brand small { color: var(--panel-muted); }
+.header-nav { gap: clamp(12px, 3vw, 32px); }
+.header-nav a { color: var(--panel-muted); }
+.header-nav a:hover, .header-nav a[aria-current] { color: var(--purple-dark); }
+.header-nav a[aria-current]::after { background: var(--purple); }
+
+.aula-hero {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  margin-block: clamp(18px, 3vw, 35px) clamp(27px, 4vw, 44px);
+  padding: clamp(22px, 4.5vw, 57px);
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 1fr);
+  gap: clamp(22px, 4vw, 54px);
+  border: 1px solid #192746;
+  border-radius: clamp(20px, 3vw, 32px);
+  background: linear-gradient(122deg, #16223e 4%, #202a4e 65%, #30285a 100%);
+  color: #fffcf2;
+  box-shadow: 0 9px 24px #221a441f;
+}
+.aula-hero::after {
+  position: absolute;
+  z-index: -1;
+  right: -36px;
+  bottom: -21px;
+  width: 300px;
+  aspect-ratio: 1;
+  border-radius: 32px;
+  content: "";
+  background: conic-gradient(#bea3f2 25%, transparent 0 50%, #bea3f2 0 75%, transparent 0) 0 0 / 48px 48px;
+  opacity: .11;
+  transform: rotate(-10deg);
+  pointer-events: none;
+}
+.aula-hero .hero-copy { padding-block: 0; }
+.aula-hero .eyebrow { color: #d9ccf6; margin-bottom: 12px; }
+.aula-hero .eyebrow span { color: #f9d977; }
+.aula-hero h1 {
+  font-size: clamp(3.1rem, 6.9vw, 6.3rem);
+  color: #fffcf2;
+}
+.aula-hero h1 em { color: #f9d977; }
+.aula-hero .hero-intro { color: #ece8f9; }
+.aula-hero .hero-art {
+  border-color: #fff2ce;
+  box-shadow: 0 7px 0 #100f2e66;
+  border-radius: clamp(14px, 2vw, 23px);
+}
+.aula-hero .hero-art img { aspect-ratio: 1.28; }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+.aula-hero .primary { color: #231d33; background: #f9d977; }
+.aula-hero .primary:hover { background: #ffe7a0; }
+.aula-hero .secondary {
+  min-height: 52px;
+  color: #fffcf2;
+  background: #ffffff0f;
+  border-color: #c9bbeb;
+}
+.aula-hero .secondary:hover { background: #ffffff24; }
+.aula-hero .button:focus-visible { outline-color: #fff6d5; }
+
+.module-section { margin-block: 0 35px; scroll-margin-top: 22px; }
+.module-section:last-child { margin-bottom: 54px; }
+.module-section > h2 {
+  margin-bottom: 14px;
+  color: var(--panel-ink);
+  font-size: clamp(1.76rem, 3.3vw, 2.62rem);
+}
+.module-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+.module-grid-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.module-grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.module-card {
+  --module-tint: #ede4ff;
+  --module-accent: #59368a;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  align-items: start;
+  align-content: start;
+  min-height: 195px;
+  column-gap: 6px;
+  row-gap: 7px;
+  padding: clamp(14px, 2vw, 20px);
+  color: var(--panel-ink);
+  border: 1px solid var(--panel-rule);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 3px 0 #e7e3ee;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.module-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--module-accent);
+  box-shadow: 0 8px 14px #28154716;
+}
+.module-card:focus-visible { outline-color: var(--purple-dark); }
+.module-blue { --module-tint: #e0edfd; --module-accent: #28507f; }
+.module-green { --module-tint: #dcefe7; --module-accent: #275e4c; }
+.module-orange { --module-tint: #f9e3d9; --module-accent: #823a2a; }
+.module-gold { --module-tint: #f6edca; --module-accent: #6d4c13; }
+.module-highlight { border-color: #ccbbe8; background: #f7f1ff; }
+.module-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 46px;
+  border-radius: 11px;
+  margin-bottom: 3px;
+  background: var(--module-tint);
+  color: var(--module-accent);
+  font-size: 1.58rem;
+  line-height: 1;
+}
+.module-status {
+  width: fit-content;
+  max-width: 100%;
+  align-self: center;
+  justify-self: end;
+  padding: 4px 8px;
+  border-radius: 7px;
+  background: #e3f1e7;
+  color: #254d36;
+  font-size: .72rem;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.28;
+}
+.module-card[data-availability="pendiente"] .module-status, .phase-panel .module-status {
+  background: #eeecf4;
+  color: #514963;
+}
+.module-card[data-availability="desarrollo"] .module-status, #companero .phase-panel .module-status {
+  background: #f6edca;
+  color: #634811;
+}
+.module-name, .module-description, .module-action { grid-column: 1 / -1; }
+.module-name {
+  font: 800 clamp(1.14rem, 1.7vw, 1.42rem)/1.12 var(--heading);
+  letter-spacing: -.032em;
+}
+.module-description { color: var(--panel-muted); font-size: .94rem; line-height: 1.4; }
+.module-action { margin-top: 4px; color: var(--module-accent); font-size: .88rem; font-weight: 800; }
+.module-action span { margin-left: 3px; }
+
+.phase-panel {
+  max-width: 690px;
+  margin-block: 24px;
+  padding: clamp(20px, 4vw, 34px);
+  border: 1px solid var(--panel-rule);
+  border-radius: 19px;
+  background: #fff;
+}
+.phase-panel h2 { margin-block: 12px 8px; color: var(--panel-ink); font-size: clamp(1.48rem, 3vw, 2rem); }
+.phase-panel p:not(.module-status) { max-width: 55ch; color: var(--panel-muted); }
+.phase-panel .button { margin-top: 16px; }
+
+@media (max-width: 1030px) {
+  .module-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .aula-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aula-hero .hero-art img { aspect-ratio: 1; }
+  .module-card { min-height: 184px; }
+}
+@media (max-width: 620px) {
+  .header-inner { flex-wrap: wrap; justify-content: start; gap: 0; padding-top: 10px; }
+  .header-nav { flex-basis: 100%; gap: clamp(10px, 5vw, 25px); min-height: 45px; }
+  .header-nav a { min-height: 44px; }
+  .aula-hero { grid-template-columns: 1fr; gap: 18px; }
+  .aula-hero h1 { font-size: clamp(2.65rem, 11vw, 4.6rem); }
+  .aula-hero .hero-art img { aspect-ratio: 1.58; }
+  .module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 430px) {
+  .module-grid { grid-template-columns: minmax(0, 1fr); }
+  .module-card { min-height: 0; }
+  .hero-actions .button { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .module-card { transition: none; }
+  .module-card:hover { transform: none; }
+}
