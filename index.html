@@ -9,10 +9,18 @@
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="portada.css">
   <link rel="stylesheet" href="academia.css">
+  <link rel="stylesheet" href="arcade.css">
+  <link rel="stylesheet" href="ia.css">
   <script src="ajedrez.js" defer></script>
   <script src="aula.js" defer></script>
   <script src="academia-contenido.js" defer></script>
+  <script src="motor-ajedrez.js" defer></script>
+  <script src="academia-ampliacion.js" defer></script>
   <script src="academia.js" defer></script>
+  <script src="arcade-contenido.js" defer></script>
+  <script src="arcade.js" defer></script>
+  <script src="ia-motor.js" defer></script>
+  <script src="ia.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -56,15 +64,15 @@
               <span class="module-icon chess" aria-hidden="true">♞</span>
               <span class="module-status">Disponible</span>
               <span class="module-name">Zona de juegos y minijuegos</span>
-              <span class="module-description">Practica con el caballo, la torre y las coordenadas.</span>
+              <span class="module-description">Practica movimientos, resuelve posiciones y juega con las piezas.</span>
               <span class="module-action">Elegir minijuego <span aria-hidden="true">→</span></span>
             </a>
-            <a class="module-card module-blue" href="#inteligencia" data-module data-availability="pendiente">
+            <a class="module-card module-blue" href="#inteligencia" data-module data-availability="disponible">
               <span class="module-icon chess" aria-hidden="true">♜</span>
-              <span class="module-status">Pendiente</span>
+              <span class="module-status">Disponible</span>
               <span class="module-name">Juega contra la inteligencia artificial</span>
-              <span class="module-description">Partidas contra el ordenador con cinco niveles.</span>
-              <span class="module-action">Ver lo previsto <span aria-hidden="true">→</span></span>
+              <span class="module-description">Elige un nivel y juega una partida contra el ordenador.</span>
+              <span class="module-action">Preparar una partida <span aria-hidden="true">→</span></span>
             </a>
             <a class="module-card module-green" href="#companero" data-module data-availability="desarrollo">
               <span class="module-icon chess" aria-hidden="true">♟♟</span>
@@ -88,9 +96,9 @@
           <div class="module-grid module-grid-two">
             <a class="module-card module-blue" href="#aprende" data-module data-availability="disponible">
               <span class="module-icon icon-board" aria-hidden="true"></span>
-              <span class="module-status">3 lecciones disponibles</span>
+              <span class="module-status">15 lecciones disponibles</span>
               <span class="module-name">Academia de ajedrez</span>
-              <span class="module-description">Explora el tablero, las coordenadas y las seis piezas.</span>
+              <span class="module-description">Aprende las reglas, practica tácticas y juega tu primera partida.</span>
               <span class="module-action">Dar los primeros pasos <span aria-hidden="true">→</span></span>
             </a>
             <a class="module-card module-orange" href="#reto" data-module data-availability="disponible">
@@ -155,7 +163,7 @@
     <section id="minijuegos" data-nav="mesa" class="vista inner-page contenedor" hidden>
       <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
       <h1 tabindex="-1">Minijuegos <em>interactivos</em></h1>
-      <p class="page-lead">Elige un juego y supera cinco rondas. Puedes volver a intentarlo tantas veces como quieras.</p>
+      <p class="page-lead">Elige una actividad para practicar. Puedes volver a intentarlo tantas veces como quieras.</p>
       <div class="tiles game-tiles">
         <a class="tile tile-rose" href="#caballo">
           <span class="tile-icon chess" aria-hidden="true">♞</span>
@@ -176,6 +184,53 @@
           <span class="tile-action">Jugar <span aria-hidden="true">→</span></span>
         </a>
       </div>
+      <section class="academia-repaso" aria-labelledby="arcade-catalogo-titulo">
+        <h2 id="arcade-catalogo-titulo">Más juegos y retos</h2>
+        <div class="tiles game-tiles" id="arcade-catalogo"></div>
+      </section>
+    </section>
+
+    <section id="arcade" class="vista inner-page game-page contenedor" data-nav="mesa" hidden>
+      <a class="back-link" href="#minijuegos"><span aria-hidden="true">←</span> Todos los minijuegos</a>
+      <h1 id="arcade-titulo" tabindex="-1">Juegos y <em>retos</em></h1>
+      <p class="page-lead" id="arcade-intro"></p>
+      <div class="arcade-partida" id="arcade-partida" hidden>
+        <div class="arcade-panel">
+          <p id="arcade-ronda" class="arcade-ronda"></p>
+          <p class="arcade-pregunta" id="arcade-consigna" tabindex="-1"></p>
+          <div class="arcade-opciones" id="arcade-opciones"></div>
+          <p id="arcade-mensaje" class="feedback" role="status" aria-atomic="true"></p>
+          <div class="arcade-acciones">
+            <button type="button" class="button primary" id="arcade-siguiente" hidden>Siguiente reto</button>
+            <button type="button" class="button primary" id="arcade-memoria" hidden>Estoy listo</button>
+            <button type="button" class="button secondary" id="arcade-deshacer" hidden>Deshacer jugada</button>
+            <button type="button" class="button secondary" id="arcade-reiniciar">Empezar de nuevo</button>
+          </div>
+          <fieldset class="arcade-promocion" id="arcade-promocion" hidden>
+            <legend>Elige una pieza para la promoción</legend>
+            <div class="arcade-acciones">
+              <button type="button" class="button secondary" data-arcade-promocion="q">Dama</button>
+              <button type="button" class="button secondary" data-arcade-promocion="r">Torre</button>
+              <button type="button" class="button secondary" data-arcade-promocion="b">Alfil</button>
+              <button type="button" class="button secondary" data-arcade-promocion="n">Caballo</button>
+            </div>
+          </fieldset>
+          <label class="arcade-reloj-control" id="arcade-reloj-control"><input type="checkbox" id="arcade-contrarreloj"> Contrarreloj de 90 segundos por reto</label>
+          <p id="arcade-tiempo" class="arcade-ronda" hidden></p>
+        </div>
+        <div>
+          <div class="board-frame arcade-tablero" id="arcade-tablero" role="group" aria-label="Tablero de práctica" aria-describedby="arcade-consigna" hidden></div>
+          <p class="board-tip" id="arcade-teclado" hidden>Toca una casilla o usa las flechas y pulsa Intro.</p>
+        </div>
+      </div>
+      <section class="arcade-panel arcade-final" id="arcade-final" hidden>
+        <h2 id="arcade-final-titulo" tabindex="-1">¡Juego superado!</h2>
+        <p>Has completado los retos. Puedes volver a jugar o elegir otra actividad.</p>
+        <div class="arcade-acciones">
+          <button type="button" class="button primary" id="arcade-repetir">Volver a jugar</button>
+          <a class="button secondary" href="#minijuegos">Elegir otro minijuego</a>
+        </div>
+      </section>
     </section>
 
     <section id="juego" data-nav="mesa" class="vista inner-page game-page contenedor" hidden>
@@ -219,19 +274,21 @@
         <div class="academia-cabecera">
           <div>
             <h1 tabindex="-1">Academia de <em>ajedrez</em></h1>
-            <p class="page-lead">Explora el tablero y conoce las seis piezas del ajedrez.</p>
+            <p class="page-lead">Del tablero a tu primera partida. Practica cada regla a tu ritmo.</p>
           </div>
           <div class="academia-avance">
-            <label for="academia-progreso">Primeros pasos</label>
-            <p id="academia-progreso-texto">0 de 3 lecciones completadas</p>
-            <progress id="academia-progreso" max="3" value="0" aria-describedby="academia-progreso-texto"></progress>
+            <label for="academia-progreso">Avance de la Academia</label>
+            <p id="academia-progreso-texto">0 de 15 lecciones completadas</p>
+            <progress id="academia-progreso" max="15" value="0" aria-describedby="academia-progreso-texto"></progress>
             <p class="academia-nota" id="academia-progreso-local">Tu avance se guarda en este navegador.</p>
             <p class="academia-nota" id="academia-progreso-aviso" hidden>El navegador no pudo guardar tu avance. Puedes seguir hasta que cierres esta página.</p>
             <p class="academia-insignia" id="academia-insignia" hidden><span aria-hidden="true">✦</span> Insignia «Primeros pasos» conseguida</p>
+            <p class="academia-insignia" id="academia-insignia-itinerario" hidden><span aria-hidden="true">✦</span> Insignia «Itinerario completado» conseguida</p>
           </div>
         </div>
 
-        <div class="academia-grid" role="group" aria-label="Lecciones de primeros pasos">
+        <h2 class="academia-bloque-titulo" id="academia-primeros-pasos">Primeros pasos</h2>
+        <div class="academia-grid" role="group" aria-labelledby="academia-primeros-pasos">
           <a class="module-card module-green academia-tarjeta" href="#aprende?leccion=tablero" data-leccion="tablero">
             <span class="module-icon icon-board" aria-hidden="true"></span>
             <span class="module-status" data-estado-leccion>Sin empezar</span>
@@ -254,6 +311,8 @@
             <span class="module-action">Abrir lección <span aria-hidden="true">→</span></span>
           </a>
         </div>
+
+        <div id="academia-unidades-nuevas"></div>
 
         <section class="academia-repaso" aria-labelledby="academia-repaso-titulo">
           <h2 id="academia-repaso-titulo">Apuntes y práctica rápida</h2>
@@ -362,13 +421,97 @@
     </section>
     <section id="inteligencia" class="vista inner-page contenedor" data-nav="mesa" hidden>
       <a class="back-link" href="#mesa"><span aria-hidden="true">←</span> Mesa de juego</a>
-      <h1 tabindex="-1">Juega contra <em>la inteligencia artificial</em></h1>
-      <div class="phase-panel">
-        <p class="module-status">Pendiente · Fase 2</p>
-        <h2>Tu rival será el ordenador</h2>
-        <p>Podrás elegir entre cinco niveles y pedir pistas para aprender durante la partida. Mientras tanto, puedes practicar las piezas con los minijuegos.</p>
-        <a class="button primary" href="#minijuegos">Ir a los minijuegos <span aria-hidden="true">→</span></a>
+      <h1 tabindex="-1">Juega contra <em>el ordenador</em></h1>
+      <p class="page-lead">Elige tu nivel y juega una partida completa a tu ritmo.</p>
+
+      <form class="ia-panel" id="ia-configuracion">
+        <h2>Prepara tu partida</h2>
+        <div class="ia-ajustes">
+          <div>
+            <label for="ia-nivel">Dificultad</label>
+            <select id="ia-nivel">
+              <option value="principiante">Principiante</option>
+              <option value="facil">Fácil</option>
+              <option value="intermedio">Intermedio</option>
+              <option value="avanzado">Avanzado</option>
+              <option value="experto">Experto</option>
+              <option value="adaptativo">Adaptativo</option>
+            </select>
+          </div>
+          <div>
+            <label for="ia-color">Tus piezas</label>
+            <select id="ia-color">
+              <option value="w">Blancas</option>
+              <option value="b">Negras</option>
+            </select>
+          </div>
+          <div>
+            <label for="ia-reloj">Tiempo por jugador</label>
+            <select id="ia-reloj">
+              <option value="0">Sin reloj</option>
+              <option value="5">5 minutos</option>
+              <option value="10">10 minutos</option>
+              <option value="15">15 minutos</option>
+            </select>
+          </div>
+          <div>
+            <label for="ia-modo">Modo</label>
+            <select id="ia-modo">
+              <option value="aprendizaje">Aprendizaje con ayudas</option>
+              <option value="competicion">Competición sin ayudas</option>
+            </select>
+          </div>
+        </div>
+        <p class="ia-nota">El nivel adaptativo se ajusta según los resultados de tus partidas anteriores en este navegador.</p>
+        <button class="button primary" id="ia-empezar" type="submit">Empezar partida <span aria-hidden="true">→</span></button>
+      </form>
+
+      <div class="ia-partida" id="ia-partida" hidden>
+        <div class="ia-juego">
+          <div class="ia-relojes" id="ia-relojes" hidden>
+            <div><span>Blancas</span> <time id="ia-tiempo-w">0:00</time></div>
+            <div><span>Negras</span> <time id="ia-tiempo-b">0:00</time></div>
+          </div>
+          <div class="board-frame ia-tablero" id="ia-tablero" role="group" aria-label="Tablero de la partida"></div>
+          <p class="board-tip">Elige una pieza y su destino. También puedes usar las flechas e Intro.</p>
+          <div class="ia-promocion" id="ia-promocion" role="group" aria-label="Elige en qué pieza coronar" hidden>
+            <p>Tu peón ha llegado al final. ¿En qué pieza lo conviertes?</p>
+            <div class="ia-acciones">
+              <button class="button secondary" type="button" data-ia-promocion="q">Dama</button>
+              <button class="button secondary" type="button" data-ia-promocion="r">Torre</button>
+              <button class="button secondary" type="button" data-ia-promocion="b">Alfil</button>
+              <button class="button secondary" type="button" data-ia-promocion="n">Caballo</button>
+              <button class="button secondary" id="ia-cancelar" type="button">Cancelar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ia-panel ia-control">
+          <p class="ia-detalle" id="ia-detalle"></p>
+          <h2 id="ia-turno" tabindex="-1">Tu turno</h2>
+          <p id="ia-estado" class="feedback" role="status" aria-atomic="true">Elige una de tus piezas.</p>
+          <fieldset id="ia-ayudas">
+            <legend>Ayudas de aprendizaje</legend>
+            <label><input type="checkbox" id="ia-legales" checked> Mostrar las jugadas legales</label>
+            <label><input type="checkbox" id="ia-amenazas"> Marcar mis piezas amenazadas</label>
+            <div class="ia-acciones">
+              <button class="button secondary" id="ia-pista" type="button">Pedir una pista</button>
+              <button class="button secondary" id="ia-deshacer" type="button">Deshacer jugada</button>
+            </div>
+          </fieldset>
+          <p class="hint" id="ia-aviso" hidden></p>
+          <div class="ia-acciones">
+            <button class="button secondary" id="ia-tablas" type="button" hidden>Reclamar tablas</button>
+            <button class="button secondary" id="ia-rendir" type="button">Rendirse</button>
+            <button class="button primary" id="ia-nueva" type="button" hidden>Nueva partida <span aria-hidden="true">→</span></button>
+          </div>
+          <details class="ia-reglas">
+            <summary>Cuándo se puede reclamar tablas</summary>
+            <p>Puedes reclamar si una posición se repite tres veces o se juegan cincuenta movimientos de cada bando sin capturas ni avances de peón. También puedes seleccionar una pieza y su destino antes de confirmar una jugada que establezca esas condiciones.</p>
+          </details>
+        </div>
       </div>
+      <p id="ia-sin-motor" class="feedback retry" hidden>No se ha podido cargar el juego. Vuelve a abrir la página para intentarlo.</p>
     </section>
 
     <section id="companero" class="vista inner-page contenedor" data-nav="mesa" hidden>

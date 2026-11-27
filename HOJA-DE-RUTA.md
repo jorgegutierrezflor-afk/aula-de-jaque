@@ -14,11 +14,11 @@ El objetivo es ampliar el aula por etapas y conservar lo que ya se usa en clase.
 
 La base del proyecto es una web que puede abrirse en el navegador. Incluye una introducción al tablero, al caballo y a la torre, los tres minijuegos de caballo, torre y coordenadas, un reto semanal, una actividad para monitores, recursos docentes y una guía para encuentros amistosos. Los minijuegos tienen instrucciones, corrección y mensajes de ánimo. La copia descargable permite usar las actividades locales sin conexión.
 
-La web pública revisada corresponde al commit `9cd5515`. El proyecto conserva por separado la versión multijugador `4ac3df9`, probada localmente con dos sesiones. Esa versión usa salas por código. El servicio figura sin configurar y el sitio público revisado carece de esa función. El tablero sincronizado y la reconexión pueden reutilizarse en la fase 4, con acceso escolar autorizado por el centro.
+La web pública revisada corresponde al commit `80890a5`, con la portada de la fase 1 y las tres primeras lecciones. El proyecto conserva por separado la versión multijugador `4ac3df9`, probada localmente con dos sesiones. Esa versión usa salas por código. El servicio figura sin configurar y el sitio público revisado carece de esa función. El tablero sincronizado y la reconexión pueden reutilizarse en la fase 4, con acceso escolar autorizado por el centro.
 
 ## Fase 1 · Revisión, menú y diseño general
 
-**Estado.** Implementada y comprobada en la copia de trabajo. La publicación en GitHub Pages sigue pendiente. Las pruebas cubrieron los once apartados, el teclado, los enlaces anteriores, las quince rondas y la edición sin conexión. Queda pendiente la comprobación visual en los dispositivos del centro.
+**Estado.** Implementada, comprobada y publicada en GitHub Pages. Las pruebas cubrieron los once apartados, el teclado, los enlaces anteriores, las quince rondas y la edición sin conexión. Queda pendiente la comprobación visual en los dispositivos del centro.
 
 - Revisar la página inicial, los enlaces y rutas existentes, las actividades, el paquete sin conexión y la configuración del servicio de partidas. Anotar qué depende del navegador, del servidor o de una publicación.
 - Preparar el acceso a **Juega contra la inteligencia artificial**, **Reta a un compañero**, **Partida aleatoria**, **Academia de ajedrez**, **Zona de juegos y minijuegos**, **Misiones y retos**, **Liga escolar y torneos**, **Tienda**, **Mi perfil**, **Escuela de monitores** y **Rincón del docente**. Dar prioridad visual a lo que se puede utilizar en clase hoy.
@@ -37,7 +37,7 @@ La web pública revisada corresponde al commit `9cd5515`. El proyecto conserva p
 
 ## Fase 2 · Academia, minijuegos e inteligencia artificial
 
-**Estado.** Primer bloque implementado en la copia de trabajo. Incluye las lecciones de tablero, coordenadas e identificación de piezas, con tres pruebas guiadas, doce ejercicios, avance en el mismo navegador y la insignia «Primeros pasos». Los siguientes bloques, los nuevos minijuegos y el juego contra la máquina siguen previstos.
+**Estado.** Implementada en la entrega actual. La Academia tiene 15 lecciones. El catálogo conserva los 3 minijuegos iniciales y añade 14 actividades, incluida la práctica libre. Las partidas contra el ordenador ofrecen cinco niveles, opción adaptativa y ayudas de aprendizaje. La publicación de esta ampliación en GitHub Pages queda pendiente.
 
 - Diseñar un itinerario con estas etapas, en orden. Tablero, filas y columnas y coordenadas, identificación de piezas, movimiento del peón, la torre, el alfil, el caballo, la dama y el rey, capturas, jaque, jaque mate, movimientos especiales, estrategias básicas y primeras partidas completas. Cada etapa combina explicación breve, ejemplo interactivo, práctica y reto de comprobación. Mostrar avance, permitir repetir y preparar las recompensas por etapa para su registro seguro en la fase 3.
 - Ampliar los juegos con **El laberinto de la torre**, **El caballo aventurero**, **La búsqueda del tesoro**, **Captura todas las piezas**, **Cada pieza a su casa**, **Memoria de piezas**, **Adivina la coordenada**, **Escapa del jaque**, **Jaque mate en un movimiento**, **Jaque mate en dos movimientos**, **Encuentra la mejor jugada**, **Defiende al rey** y retos de lógica y razonamiento. Ofrecer práctica libre con piezas, dificultad graduada cuando sea posible y contrarreloj opcional. Cada juego explica el objetivo, corrige automáticamente y reconoce la finalización.

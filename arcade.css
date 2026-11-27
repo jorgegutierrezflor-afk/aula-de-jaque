@@ -1,0 +1,38 @@
+.arcade-partida {
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(0, 1fr);
+  gap: clamp(15px, 4vw, 40px);
+  margin-top: 23px;
+  align-items: start;
+}
+.arcade-panel {
+  min-width: 0;
+  padding: clamp(15px, 3vw, 27px);
+  background: #fff;
+  border: 1px solid var(--panel-rule);
+  border-radius: 18px;
+}
+.arcade-ronda { color: var(--purple-dark); font-size: .9rem; font-weight: 800; }
+.arcade-pregunta { margin: 6px 0 10px; font-weight: 800; color: var(--panel-ink); font-size: 1.12rem; }
+.arcade-acciones, .arcade-opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.arcade-acciones, .arcade-final { margin-top: 13px; }
+.arcade-final { max-width: 42rem; }
+.arcade-final h2 { font-size: clamp(1.75rem, 3.4vw, 2.45rem); margin-bottom: 8px; }
+.arcade-reloj-control { display: flex; align-items: center; gap: 8px; margin-top: 16px; min-height: 42px; color: var(--panel-muted); }
+.arcade-reloj-control input { width: 18px; height: 18px; }
+.arcade-promocion { margin: 14px 0 0; padding: 10px 13px 14px; border: 1px solid var(--panel-rule); border-radius: 9px; }
+.arcade-promocion legend { font-weight: 800; }
+.arcade-tablero { width: min(100%, 495px); margin-inline: auto; }
+.arcade-tablero .board-grid { grid-template-rows: repeat(8, minmax(0, 1fr)); }
+.arcade-tablero .arcade-seleccion { box-shadow: inset 0 0 0 3px #315978; }
+.arcade-tablero .arcade-pista { box-shadow: inset 0 0 0 3px #573986; }
+.arcade-tablero .arcade-obstaculo { background: #725845; color: #fff1d4; }
+.arcade-tablero .arcade-estrella { color: #56367d; font-size: clamp(.84rem, 3.4vw, 1.8rem); line-height: 1; }
+.arcade-tablero .arcade-con-simbolo .board-mark { position: absolute; right: 2px; bottom: 2px; font-size: .8rem; }
+.arcade-opciones .correct { background: #e4f0da; border-color: #acc29a; color: #27491e; }
+.arcade-opciones .incorrect { background: #fae5d9; border-color: #e1bca7; color: #6b3727; }
+.arcade-catalogo-logro { margin-top: 5px; color: #375d35; font-size: .87rem; font-weight: 800; }
+@media (max-width: 700px) {
+  .arcade-partida { grid-template-columns: minmax(0, 1fr); }
+  .arcade-tablero { margin-inline: 0; }
+}

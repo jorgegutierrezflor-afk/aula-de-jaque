@@ -10,7 +10,17 @@
   const practice = byId("practica");
   const result = byId("resultado");
   const nextButton = byId("siguiente");
-  const ids = ["tablero", "coordenadas", "piezas"];
+  const starterIds = ["tablero", "coordenadas", "piezas"];
+  const ids = Object.keys(academy.lessons);
+  const units = [
+    { title: "Movimientos de las piezas", color: "blue", lessons: ["peon", "torre", "alfil", "caballo", "dama", "rey"] },
+    { title: "Reglas de juego", color: "orange", lessons: ["capturas", "jaque", "mate", "movimientos-especiales"] },
+    { title: "Estrategia y partida", color: "green", lessons: ["estrategias", "primeras-partidas"] },
+  ];
+  const symbols = {
+    peon: "♟", torre: "♜", alfil: "♝", caballo: "♞", dama: "♛", rey: "♚",
+    capturas: "×", jaque: "♔", mate: "♚", "movimientos-especiales": "↔", estrategias: "✦", "primeras-partidas": "⚑",
+  };
   const storageKey = "aula-jaque.academia.v1";
   const arrows = { ArrowLeft: [0, -1], ArrowRight: [0, 1], ArrowUp: [-1, 0], ArrowDown: [1, 0] };
   const emptyProgress = () => ({ completed: new Set(), resumes: new Map() });
@@ -19,6 +29,48 @@
   let lesson;
   let step = 0;
   let passed = false;
+
+  function addText(parent, tag, className, text) {
+    const item = document.createElement(tag);
+    item.className = className;
+    item.textContent = text;
+    parent.append(item);
+    return item;
+  }
+
+  function makeLessonCard(id, color) {
+    const entry = academy.lessons[id];
+    const card = document.createElement("a");
+    card.className = `module-card module-${color} academia-tarjeta`;
+    card.href = `#aprende?leccion=${id}`;
+    card.dataset.leccion = id;
+    addText(card, "span", "module-icon chess", symbols[id]).setAttribute("aria-hidden", "true");
+    addText(card, "span", "module-status", "Por hacer").setAttribute("data-estado-leccion", "");
+    addText(card, "span", "module-name", `${ids.indexOf(id) + 1}. ${entry.title}`);
+    addText(card, "span", "module-description", entry.summary);
+    const action = addText(card, "span", "module-action", "Abrir lección ");
+    addText(action, "span", "", "→").setAttribute("aria-hidden", "true");
+    return card;
+  }
+
+  function renderUnits() {
+    const target = byId("unidades-nuevas");
+    if (!target) return;
+    for (const [index, { title, color, lessons }] of units.entries()) {
+      const available = lessons.filter((id) => Object.hasOwn(academy.lessons, id));
+      if (!available.length) continue;
+      const section = document.createElement("section");
+      section.className = "academia-bloque";
+      const heading = addText(section, "h2", "", title);
+      heading.id = `academia-unidad-${index + 2}`;
+      section.setAttribute("aria-labelledby", heading.id);
+      const grid = document.createElement("div");
+      grid.className = "academia-grid";
+      for (const id of available) grid.append(makeLessonCard(id, color));
+      section.append(grid);
+      target.append(section);
+    }
+  }
 
   function readProgress() {
     if (storageBlocked) return null;
@@ -51,10 +103,14 @@
 
   function refreshProgress() {
     const count = progress.completed.size;
-    byId("progreso").value = count;
+    const meter = byId("progreso");
+    meter.max = ids.length;
+    meter.value = count;
     byId("progreso-texto").textContent = `${count} de ${ids.length} lecciones completadas`;
     const award = byId("insignia");
-    if (award) award.hidden = count < ids.length;
+    if (award) award.hidden = !starterIds.every((id) => progress.completed.has(id));
+    const routeAward = byId("insignia-itinerario");
+    if (routeAward) routeAward.hidden = count < ids.length || ids.length <= starterIds.length;
     const notice = byId("progreso-aviso");
     if (notice) notice.hidden = !storageBlocked;
     const local = byId("progreso-local");
@@ -114,7 +170,7 @@
     board.append(group);
   }
 
-  function makeBoard(host, settings) {
+  function makeBoard(host, settings, interactive = true) {
     const frame = document.createElement("div");
     frame.className = "board-frame academia-tablero";
     frame.setAttribute("role", "group");
@@ -123,23 +179,42 @@
     grid.className = "board-grid";
     const files = [...academy.files];
     const buttons = [];
+    const occupied = [];
+    const marked = [];
 
     for (const [row, rank] of academy.ranks.entries()) {
       for (const [column, file] of files.entries()) {
         const value = file + rank;
         const dark = (row + column) % 2 === 1;
-        const highlighted = settings.highlight.includes(value);
-        const label = `${value}, casilla ${dark ? "oscura" : "clara"}${highlighted ? ", marcada" : ""}`;
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "square";
-        button.classList.toggle("dark", dark);
-        button.classList.toggle("academia-pista-casilla", highlighted);
-        button.dataset.academiaCasilla = value;
-        button.tabIndex = buttons.length ? -1 : 0;
-        button.setAttribute("aria-label", label);
-        grid.append(button);
-        buttons.push({ node: button, value, label });
+        const highlighted = settings.highlight?.includes(value);
+        const piece = settings.pieces?.[value];
+        const parts = [value, `casilla ${dark ? "oscura" : "clara"}`];
+        const square = document.createElement(interactive ? "button" : "div");
+        square.className = "square";
+        square.classList.toggle("dark", dark);
+        square.classList.toggle("academia-pista-casilla", Boolean(highlighted));
+        if (highlighted) {
+          parts.push("marcada");
+          marked.push(value);
+        }
+        if (piece) {
+          parts.push(piece.description);
+          occupied.push(`${value}, ${piece.description}`);
+          square.classList.add("academia-casilla-con-pieza");
+          const glyph = addText(square, "span", "academia-pieza-tablero piece chess", piece.symbol);
+          glyph.setAttribute("aria-hidden", "true");
+        }
+        if (interactive) {
+          const label = parts.join(", ");
+          square.type = "button";
+          square.dataset.academiaCasilla = value;
+          square.tabIndex = buttons.length ? -1 : 0;
+          square.setAttribute("aria-label", label);
+          buttons.push({ node: square, value, label });
+        } else {
+          square.classList.add("academia-casilla-estatica");
+        }
+        grid.append(square);
       }
     }
 
@@ -168,18 +243,23 @@
     } else {
       frame.classList.add("academia-tablero-sin-ejes");
     }
+    if (!interactive) {
+      frame.classList.add("academia-tablero-estatico");
+      grid.setAttribute("aria-hidden", "true");
+      const description = [occupied.length ? `Posición: ${occupied.join("; ")}.` : "Tablero vacío."];
+      if (marked.length) description.push(`Casillas marcadas: ${marked.join(", ")}.`);
+      addText(frame, "p", "sr-only", description.join(" "));
+    }
     host.append(frame);
     return buttons;
   }
 
-  function makePieceChoices(host, activity) {
-    const piece = document.createElement("span");
-    piece.className = "academia-pieza chess";
-    piece.textContent = activity.symbol;
-    piece.setAttribute("aria-hidden", "true");
-    const clue = document.createElement("p");
-    clue.className = "academia-pieza-clave";
-    clue.textContent = activity.description;
+  function makeChoices(host, activity) {
+    if (activity.board) makeBoard(host, activity.board, false);
+    if (activity.symbol) {
+      addText(host, "span", "academia-pieza chess", activity.symbol).setAttribute("aria-hidden", "true");
+    }
+    if (activity.description) addText(host, "p", "academia-pieza-clave", activity.description);
     const choices = document.createElement("div");
     choices.className = "academia-opciones";
 
@@ -192,7 +272,7 @@
       choices.append(button);
       return { node: button, value: id, label };
     });
-    host.append(piece, clue, choices);
+    host.append(choices);
     return buttons;
   }
 
@@ -218,7 +298,7 @@
     host.replaceChildren();
     showMessage(message, "");
     const board = activity.kind === "board";
-    const entries = board ? makeBoard(host, activity.board) : makePieceChoices(host, activity);
+    const entries = board ? makeBoard(host, activity.board) : makeChoices(host, activity);
     let solved = false;
 
     for (const entry of entries) {
@@ -265,10 +345,13 @@
   function renderResult(focus = false) {
     practice.hidden = true;
     result.hidden = false;
-    const all = progress.completed.size === ids.length;
-    byId("resultado-texto").textContent = all
-      ? "Has completado las tres lecciones y conseguido la insignia Primeros pasos. Puedes volver a practicarlas cuando quieras."
-      : "Has completado esta lección. Puedes practicar de nuevo o elegir otra lección.";
+    let summary = "Has completado esta lección. Puedes practicar de nuevo o elegir otra lección.";
+    if (progress.completed.size === ids.length && ids.length > starterIds.length) {
+      summary = `Has completado las ${ids.length} lecciones y conseguido la insignia Itinerario completado. Puedes volver a practicar cuando quieras.`;
+    } else if (starterIds.includes(lesson.id) && starterIds.every((id) => progress.completed.has(id))) {
+      summary = "Has completado las tres primeras lecciones y conseguido la insignia Primeros pasos. Sigue descubriendo el ajedrez.";
+    }
+    byId("resultado-texto").textContent = summary;
     const link = byId("proxima");
     const id = ids[ids.indexOf(lesson.id) + 1];
     link.href = id ? `#aprende?leccion=${id}` : "#aprende";
@@ -346,6 +429,7 @@
     progress = readProgress() || emptyProgress();
     refreshProgress();
   });
+  renderUnits();
   refreshProgress();
   navigate();
 })();

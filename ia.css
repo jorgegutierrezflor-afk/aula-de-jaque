@@ -1,0 +1,136 @@
+.ia-panel {
+  padding: clamp(17px, 4vw, 29px);
+  margin-top: 23px;
+  border: 1px solid var(--rule);
+  border-radius: 17px;
+  background: var(--card);
+}
+.ia-panel h2 { font-size: clamp(1.55rem, 3vw, 2rem); }
+.ia-ajustes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin: 16px 0;
+}
+.ia-ajustes label { display: block; margin-bottom: 5px; font-weight: 800; }
+.ia-ajustes select {
+  min-height: 48px;
+  width: 100%;
+  padding: 8px 10px;
+  background: #fffefa;
+  color: var(--ink);
+  font: inherit;
+  border: 1px solid #bbaf9e;
+  border-radius: 10px;
+}
+.ia-ajustes select:focus-visible, .ia-control input:focus-visible {
+  outline: 3px solid #234663;
+  outline-offset: 2px;
+}
+.ia-nota { margin: 3px 0 16px; color: var(--muted); }
+.ia-partida {
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(0, .85fr);
+  gap: clamp(15px, 4vw, 36px);
+  align-items: start;
+  margin-top: 23px;
+}
+.ia-juego { width: 100%; max-width: 548px; }
+.ia-tablero .board-grid { grid-template-rows: repeat(8, minmax(0, 1fr)); }
+.ia-relojes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 9px;
+}
+.ia-relojes div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 9px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--card);
+}
+.ia-relojes time { font: 800 1.15rem/1.2 var(--heading); font-variant-numeric: tabular-nums; }
+.ia-relojes .ia-activo { background: #f2e6ba; border-color: #9f854c; }
+.ia-relojes .ia-urgente time { color: #873542; }
+.ia-control { margin-top: 0; }
+.ia-control fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  margin: 12px 0 0;
+  padding: 12px 0;
+  border: 0;
+  border-block: 1px solid var(--rule);
+}
+.ia-control legend { font-weight: 800; padding-right: 7px; }
+.ia-control label { min-height: 35px; display: flex; gap: 7px; align-items: center; }
+.ia-control input { flex: none; width: 21px; height: 21px; accent-color: #315f71; }
+.ia-detalle { margin: 0 0 5px; color: var(--muted); font-size: .93rem; font-weight: 800; }
+.ia-acciones { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+.ia-reglas { margin-top: 17px; color: var(--muted); }
+.ia-reglas summary { cursor: pointer; font-weight: 700; }
+.ia-reglas p { margin-top: 6px; font-size: .9rem; }
+.ia-promocion {
+  margin-top: 13px;
+  padding: 12px;
+  border: 1px solid #bfb493;
+  border-radius: 11px;
+  background: var(--card);
+}
+.ia-promocion p { font-weight: 800; }
+.ia-tablero .ia-pieza { z-index: 1; pointer-events: none; }
+.ia-tablero .ia-pieza-blanca {
+  color: #fffaf0;
+  text-shadow: -1px -1px #302416, 1px -1px #302416, -1px 1px #302416, 1px 1px #302416;
+}
+.ia-tablero .ia-ultima { background: #e4d294; }
+.ia-tablero .ia-ultima.dark { background: #bca362; }
+.ia-tablero .ia-elegida { background: #a6c7d1; }
+.ia-tablero .ia-jaque { background: #f4a7a0; }
+.ia-tablero .ia-amenazada::before,
+.ia-tablero .ia-legal::before,
+.ia-tablero .ia-pista::before {
+  position: absolute;
+  pointer-events: none;
+  content: "";
+}
+.ia-tablero .ia-amenazada::before {
+  inset: 1px;
+  border: 2px dashed #9b332c;
+}
+.ia-tablero .ia-legal::before {
+  width: 28%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #306454;
+}
+.ia-tablero .ia-legal.ia-ocupada::before {
+  inset: 4px;
+  width: auto;
+  border: 3px solid #306454;
+  background: transparent;
+}
+.ia-tablero .ia-pista::before {
+  inset: 3px;
+  width: auto;
+  border: 3px solid #236391;
+  border-radius: 4px;
+  background: transparent;
+}
+.ia-tablero .square:focus-visible::after { z-index: 2; }
+#ia-estado { min-height: 2.5em; margin-top: 9px; }
+#ia-aviso { min-height: 0; }
+.ia-acciones button:disabled { opacity: .62; cursor: default; }
+@media (max-width: 760px) {
+  .ia-partida { grid-template-columns: minmax(0, 1fr); }
+  .ia-juego { margin-inline: auto; }
+}
+@media (max-width: 450px) {
+  .ia-ajustes { grid-template-columns: minmax(0, 1fr); }
+}
