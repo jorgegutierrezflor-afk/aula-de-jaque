@@ -562,7 +562,10 @@
   byId("pista").addEventListener("click", askHint);
   byId("deshacer").addEventListener("click", undo);
   byId("rendir").addEventListener("click", () => {
-    if (match && !finished && !checkClock()) finish(other(human), "Has terminado la partida. Puedes intentarlo otra vez.");
+    if (!match || finished || checkClock()) return;
+    const winner = other(human);
+    if (canMate(winner)) finish(winner, "Has terminado la partida. Puedes intentarlo otra vez.");
+    else finish(null, "Has terminado la partida. El otro bando no tiene piezas para dar mate.");
   });
   byId("tablas").addEventListener("click", () => {
     if (!match || finished || match.turn() !== human || checkClock()) return;
