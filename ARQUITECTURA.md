@@ -4,13 +4,11 @@ CEIP Vicente Tofiño · Revisión del 26 de noviembre de 2026
 
 ## Punto de partida
 
-La versión de GitHub revisada en el commit `80890a5` carga HTML, CSS y JavaScript directamente en el navegador. Incluye los tres minijuegos de caballo, torre y coordenadas, corrección automática y el reto que aparece en `index.html`. Este tipo de página admite una copia descargable para el aula. [Aula de Jaque en GitHub Pages](https://jorgegutierrezflor-afk.github.io/aula-de-jaque/)
+La versión de GitHub revisada en el commit `9cd5515` carga HTML, CSS y JavaScript directamente en el navegador. Incluye los tres minijuegos de caballo, torre y coordenadas, corrección automática y el reto que aparece en `index.html`. Este tipo de página admite una copia descargable para el aula. [Aula de Jaque en GitHub Pages](https://jorgegutierrezflor-afk.github.io/aula-de-jaque/)
 
 La entrega anterior de multijugador se conserva por separado. Contiene `companero.js`, `configuracion-retos.js` y un servidor Cloudflare Worker en `backend/`. Cada sala utiliza un Durable Object con almacenamiento SQLite. El servidor valida turnos y jugadas con `chess.js`, envía el tablero por WebSocket y permite reconectar con el mismo asiento. El endpoint de la copia revisada está vacío. El código de sala permite entrar a quien lo conozca y por sí solo no acredita que pertenezca al colegio. Se puede reutilizar la lógica de juego para la futura zona escolar protegida. [WebSockets en Durable Objects](https://developers.cloudflare.com/durable-objects/best-practices/websockets/)
 
-La Academia, los minijuegos y las partidas contra el ordenador funcionan en el navegador. Guarda las lecciones completadas y el punto de cada práctica en el almacenamiento local del navegador usado. El avance se puede usar en una copia sin conexión cuando el navegador permite ese almacenamiento. La sincronización entre dispositivos y las recompensas de un perfil se abordarán cuando exista el acceso autorizado del centro.
-
-El rival de ordenador usa una búsqueda local que cede tiempo al navegador entre grupos de cálculos. La biblioteca chess.js 1.4.0 valida las jugadas y está incluida en la copia descargable con su licencia BSD de dos cláusulas. El nivel adaptativo y los retos completados se guardan solo en el navegador del dispositivo. La graduación de los cinco niveles es orientativa y está destinada al aprendizaje. La copia sin conexión incluye todos los recursos del juego.
+El bloque «Primeros pasos» de la Academia funciona en el navegador. Guarda las lecciones completadas y el punto de cada práctica en el almacenamiento local del navegador usado. El avance se puede usar en una copia sin conexión cuando el navegador permite ese almacenamiento. La sincronización entre dispositivos y las recompensas de un perfil se abordarán cuando exista el acceso autorizado del centro.
 
 ## Qué necesita cada fase
 

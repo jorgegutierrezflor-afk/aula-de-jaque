@@ -1,0 +1,252 @@
+.academia-cabecera {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(225px, 305px);
+  align-items: center;
+  gap: clamp(16px, 5vw, 65px);
+}
+.academia-avance {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 15px 17px;
+  border: 1px solid #dcd2ee;
+  border-radius: 17px;
+  background: #f2ecfc;
+  color: var(--panel-ink);
+}
+.academia-avance label {
+  font: 800 1.23rem/1.14 var(--heading);
+}
+#academia-progreso-texto {
+  font-weight: 750;
+}
+#academia-progreso {
+  width: 100%;
+  height: 11px;
+  border: 0;
+  border-radius: 16px;
+  accent-color: var(--purple);
+}
+.academia-avance .academia-nota {
+  color: var(--panel-muted);
+  font-size: .87rem;
+}
+.academia-insignia {
+  width: fit-content;
+  margin-top: 3px;
+  padding: 5px 8px;
+  border-radius: 7px;
+  background: #f4e8bf;
+  color: #624816;
+  font-size: .86rem;
+  font-weight: 800;
+}
+.academia-insignia span {
+  margin-right: 3px;
+}
+.academia-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+  margin-top: 24px;
+}
+.academia-tarjeta {
+  min-height: 185px;
+}
+.academia-tarjeta .module-icon {
+  font-weight: 800;
+}
+.academia-tarjeta .module-status {
+  color: #514963;
+  background: #eeecf4;
+}
+.academia-tarjeta .module-status[data-estado="completada"] {
+  color: #254d36;
+  background: #e3f1e7;
+}
+.academia-repaso {
+  margin-top: 40px;
+}
+.academia-repaso h2 {
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+}
+.academia-repaso h3 {
+  margin: 0;
+}
+.academia-repaso .lesson-tiles {
+  margin-top: 13px;
+}
+.academia-explicacion {
+  max-width: 770px;
+  margin-top: 16px;
+  padding: 13px 17px;
+  border-left: 4px solid #8b6abe;
+  border-radius: 0 11px 11px 0;
+  background: #f2ecfc;
+  color: var(--panel-ink);
+}
+.academia-explicacion p + p { margin-top: 6px; }
+
+.academia-actividades {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 15px;
+  margin-top: 23px;
+}
+.academia-panel {
+  min-width: 0;
+  padding: clamp(15px, 3vw, 25px);
+  border: 1px solid var(--panel-rule);
+  border-radius: 18px;
+  background: #fff;
+}
+.academia-panel h2 {
+  color: var(--panel-ink);
+  font-size: clamp(1.6rem, 3vw, 2.17rem);
+}
+.academia-ronda {
+  margin-top: 6px;
+  color: var(--purple-dark);
+  font-size: .89rem;
+  font-weight: 800;
+}
+.academia-consigna {
+  margin-top: 7px;
+  color: var(--panel-ink);
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+.academia-cuerpo {
+  display: grid;
+  align-items: start;
+  justify-items: start;
+  gap: 10px;
+  margin-top: 12px;
+}
+.academia-cuerpo .board-frame {
+  width: min(100%, 348px);
+  box-shadow: none;
+}
+.academia-cuerpo .academia-tablero-sin-ejes {
+  display: block;
+  padding: 7px;
+}
+.academia-cuerpo .board-grid {
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+}
+.academia-cuerpo .square.academia-pista-casilla:not(.correct):not(.incorrect) {
+  box-shadow: inset 0 0 0 3px #533786;
+}
+.academia-cuerpo .square.academia-pista-casilla:not(.correct):not(.incorrect)::before {
+  content: "✦";
+  color: #44306d;
+  font-size: clamp(.8rem, 2.1vw, 1.2rem);
+  pointer-events: none;
+}
+.academia-pieza {
+  display: grid;
+  place-items: center;
+  width: clamp(76px, 11vw, 102px);
+  aspect-ratio: 1;
+  padding: 4px;
+  border: 1px solid #dcd2ee;
+  border-radius: 12px;
+  background: #f2ecfc;
+  color: #382964;
+  font-size: clamp(2.9rem, 6vw, 4.4rem);
+  line-height: 1;
+}
+.academia-pieza-clave { color: var(--panel-muted); }
+.academia-opciones, .academia-acciones {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.academia-opciones .button {
+  min-height: 46px;
+  padding-inline: 13px;
+}
+.academia-opciones .correct { background: #e4f0da; color: #27491e; border-color: #acc29a; }
+.academia-opciones .incorrect { background: #fae5d9; color: #6b3727; border-color: #e1bca7; }
+.academia-cuerpo .board-mark {
+  font-size: clamp(.8rem, 2vw, 1.2rem);
+}
+.academia-panel .feedback {
+  min-height: 0;
+}
+.academia-panel .feedback:empty {
+  min-height: 0;
+  margin: 0;
+}
+#academia-siguiente { margin-top: 9px; }
+.academia-resultado {
+  background: #f4eefc;
+  border-color: #dcd2ee;
+}
+.academia-estrella {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #9a661b;
+  font-size: 1.85rem;
+  line-height: 1;
+}
+#academia-resultado-texto {
+  margin-block: 8px 15px;
+  color: var(--panel-muted);
+}
+@media (max-width: 740px) {
+  .academia-cabecera, .academia-actividades {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .academia-avance { max-width: 420px; }
+  .academia-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 445px) {
+  .academia-grid { grid-template-columns: minmax(0, 1fr); }
+  .academia-tarjeta { min-height: 0; }
+}
+
+.academia-glosario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 6px;
+  padding: 0;
+  margin: 13px 0 4px;
+  list-style: none;
+}
+.academia-glosario li {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  padding: 6px 4px;
+  border: 1px solid #dcd2ee;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--panel-ink);
+  font-size: .84rem;
+  font-weight: 800;
+}
+.academia-glosario .chess {
+  color: #382964;
+  font-size: 1.83rem;
+  line-height: 1;
+}
+
+.academia-bloque { margin-top: 32px; }
+.academia-bloque-titulo,
+.academia-bloque > h2 {
+  margin-top: 26px;
+  color: var(--panel-ink);
+  font-size: clamp(1.55rem, 3vw, 2rem);
+}
+.academia-bloque-titulo + .academia-grid,
+.academia-bloque > .academia-grid { margin-top: 11px; }
+.academia-tablero .academia-pieza-tablero { pointer-events: none; }
+.academia-casilla-estatica { cursor: default; }
+.academia-casilla-con-pieza .academia-marca {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+}
+#arcade-catalogo { margin-top: 13px; }

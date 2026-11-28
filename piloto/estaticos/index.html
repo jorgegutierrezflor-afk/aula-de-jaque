@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Perfiles · Aula de Jaque</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="portada.css">
+  <link rel="stylesheet" href="piloto.css">
+  <link rel="stylesheet" href="docente.css">
+  <link rel="stylesheet" href="alumno.css">
+
+  <script src="piloto.js" defer></script>
+  <script src="docente.js" defer></script>
+  <script src="alumno.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#fase3-contenido" id="fase3-salto">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="contenedor header-inner fase3-cabecera">
+      <a class="brand" href="#inicio">
+        <span class="brand-icon chess" aria-hidden="true">♞</span>
+        <span><strong>Aula de Jaque</strong><small>CEIP Vicente Tofiño</small></span>
+      </a>
+      <nav class="fase3-menu" id="fase3-nav" aria-label="Navegación de perfiles" hidden>
+        <a href="#gestion-docente" data-fase3-rol="docente">Panel docente</a>
+        <a href="#perfil" data-fase3-rol="alumno">Mi perfil</a>
+        <a href="#tienda" data-fase3-rol="alumno">Tienda</a>
+        <button type="button" class="button secondary" id="fase3-salir">Cerrar sesión</button>
+      </nav>
+    </div>
+  </header>
+  <aside class="fase3-aviso" aria-label="Acceso escolar">
+    <div class="contenedor"><strong>Grupo piloto</strong>
+      <span id="fase3-aviso-texto">Acceso individual del CEIP Vicente Tofiño.</span>
+    </div>
+  </aside>
+  <main id="fase3-contenido" tabindex="-1">
+    <div class="contenedor" id="fase3-mensaje-contenedor">
+      <p id="fase3-mensaje" class="feedback" role="status" aria-atomic="true"></p>
+    </div>
+    <section id="inicio" class="vista inner-page contenedor">
+      <div class="fase3-hero">
+        <div class="fase3-hero-copy">
+          <h1 tabindex="-1">Perfiles de <em>Aula de Jaque</em></h1>
+          <p>Entra para practicar en la Academia, ver tu avance y personalizar tu perfil con Monedas de Jaque.</p>
+          <a class="fase3-retorno" href="https://jorgegutierrezflor-afk.github.io/aula-de-jaque/">← Volver a las actividades</a>
+        </div>
+        <div class="fase3-hero-arte" aria-hidden="true">
+          <span class="fase3-ficha fase3-ficha-lila chess">♞</span>
+          <span class="fase3-ficha fase3-ficha-oro">✦</span>
+          <span class="fase3-ficha fase3-ficha-verde chess">♜</span>
+        </div>
+      </div>
+
+      <div class="fase3-accesos" id="fase3-accesos" hidden>
+        <article class="fase3-card">
+          <span class="fase3-icono chess" aria-hidden="true">♞</span>
+          <h2>Entra con un código</h2>
+          <p id="fase3-codigo-ayuda">Usa el código que te entregue tu docente. Guárdalo y úsalo cada vez que quieras entrar.</p>
+          <form id="fase3-form" class="fase3-form">
+            <div class="fase3-campo">
+              <label for="fase3-codigo">Tu código</label>
+              <input id="fase3-codigo" name="codigo" type="password" autocomplete="off" spellcheck="false" maxlength="150" required aria-describedby="fase3-codigo-ayuda">
+            </div>
+            <button class="button primary" id="fase3-entrar" type="submit">Entrar</button>
+          </form>
+        </article>
+      </div>
+      <div class="fase3-card fase3-sesion" id="fase3-sin-servicio" hidden>
+        <h2>El acceso al grupo piloto aún se está preparando</h2>
+        <p>Puedes seguir practicando en Aula de Jaque.</p>
+        <a class="button primary" href="https://jorgegutierrezflor-afk.github.io/aula-de-jaque/">Volver a las actividades</a>
+      </div>
+      <div class="fase3-card fase3-sesion" id="fase3-sesion" hidden>
+        <h2 id="fase3-sesion-titulo"></h2>
+        <a class="button primary" id="fase3-sesion-ir" href="#inicio"></a>
+      </div>
+    </section>
+
+    <section id="gestion-docente" class="vista inner-page contenedor" data-nav="colegio" hidden>
+      <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
+      <h1 tabindex="-1">Panel <em>docente</em></h1>
+      <p class="page-lead">Gestiona accesos, actividades y recompensas por curso o grupo.</p>
+      <p id="docente-estado" class="docente-estado" role="status" aria-live="polite" aria-atomic="true"></p>
+
+      <div id="docente-consola" hidden>
+        <div class="docente-barra">
+          <h2>Administración de los accesos</h2>
+          <div class="docente-acciones">
+            <button type="button" class="button secondary" id="docente-recargar">Actualizar</button>
+          </div>
+        </div>
+
+        <section class="docente-panel" aria-labelledby="docente-grupos-titulo">
+          <h2 id="docente-grupos-titulo" tabindex="-1">Cursos y grupos</h2>
+          <form id="docente-crear-lote" class="docente-lote">
+            <h3>Generar códigos de acceso</h3>
+            <p>Cada código abre un perfil del grupo. El alumno elige su alias al entrar y puede volver con el mismo código.</p>
+            <div class="docente-lote-controles">
+              <div class="docente-campo docente-curso">
+                <label for="docente-curso">Curso o grupo</label>
+                <input id="docente-curso" type="text" maxlength="40" list="docente-cursos-sugeridos" autocomplete="off" placeholder="5.º A" required>
+                <datalist id="docente-cursos-sugeridos"></datalist>
+              </div>
+              <div class="docente-campo">
+                <label for="docente-cantidad">Cantidad de códigos</label>
+                <input id="docente-cantidad" type="number" min="1" max="500" step="1" placeholder="25" inputmode="numeric" required>
+              </div>
+              <button type="submit" class="button primary" id="docente-generar">Generar códigos</button>
+            </div>
+          </form>
+
+          <div class="docente-campo">
+            <label for="docente-filtro-curso">Filtrar por curso o grupo</label>
+            <select id="docente-filtro-curso" aria-controls="docente-codigo docente-aliases"></select>
+          </div>
+
+          <div id="docente-codigo" class="docente-codigo" hidden>
+            <h3 id="docente-codigo-titulo" tabindex="-1">Lista privada de códigos</h3>
+            <p id="docente-codigo-detalle"></p>
+            <p>Guarda la lista antes de salir del panel y entrega a cada alumno su propio código en privado.</p>
+            <div class="docente-codigo-acciones">
+              <button type="button" class="button primary" id="docente-descargar">Descargar lista (CSV)</button>
+              <button type="button" class="button secondary" id="docente-copiar">Copiar lista</button>
+              <button type="button" class="button secondary" id="docente-imprimir">Imprimir lista</button>
+            </div>
+            <div class="docente-campo docente-copia-manual" id="docente-copia-manual" hidden>
+              <label for="docente-codigo-valor">Lista para copiar</label>
+              <textarea id="docente-codigo-valor" rows="6" autocomplete="off" spellcheck="false" readonly></textarea>
+            </div>
+            <div id="docente-codigo-lista"></div>
+          </div>
+
+          <h3 class="docente-listado-titulo" id="docente-accesos-titulo">Accesos por curso o grupo</h3>
+          <p id="docente-cuenta-accesos" class="docente-cuenta-accesos" role="status"></p>
+          <div id="docente-aliases" class="docente-aliases"></div>
+          <div id="docente-confirmacion" class="docente-codigo" role="group" aria-labelledby="docente-confirmacion-titulo" hidden>
+            <h3 id="docente-confirmacion-titulo"></h3>
+            <p id="docente-confirmacion-detalle"></p>
+            <div class="docente-acciones">
+              <button type="button" class="button primary" id="docente-confirmar">Confirmar</button>
+              <button type="button" class="button secondary" id="docente-cancelar">Cancelar</button>
+            </div>
+          </div>
+        </section>
+
+        <div class="docente-ajustes">
+          <form id="docente-reconocer" class="docente-panel">
+            <h2>Reconocer una actividad</h2>
+            <p>Otorga la recompensa de una práctica. Se aplica una vez por actividad y perfil.</p>
+            <div class="docente-campo">
+              <label for="docente-reconocer-alias">Acceso</label>
+              <select id="docente-reconocer-alias" required></select>
+            </div>
+            <div class="docente-campo">
+              <label for="docente-actividad">Actividad</label>
+              <select id="docente-actividad" required></select>
+            </div>
+            <button class="button primary" id="docente-reconocer-boton" type="submit">Aplicar recompensa</button>
+          </form>
+
+          <form id="docente-recompensas" class="docente-panel">
+            <h2>Ajustar recompensas</h2>
+            <p>Cambia las cantidades que se usarán en los próximos reconocimientos.</p>
+            <div id="docente-importes" class="docente-importes"></div>
+            <button class="button primary" id="docente-guardar" type="submit">Guardar importes</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="perfil" class="vista inner-page contenedor f3-alumno" data-nav="mi-espacio" hidden>
+      <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
+      <h1 tabindex="-1">Mi <em>perfil</em></h1>
+      <p class="page-lead">Consulta tus logros y elige cómo se ve tu perfil.</p>
+      <p class="f3-nota"><span aria-hidden="true">✦</span> Acceso del grupo piloto</p>
+      <div class="phase-panel" id="f3-perfil-sin-acceso">
+        <h2>Accede a tu perfil</h2>
+        <p>Entra con el código que te dio tu docente.</p>
+        <a class="button primary" href="#inicio" data-f3-acceso>Elegir un acceso</a>
+      </div>
+      <div id="f3-perfil-contenido" hidden>
+        <p class="feedback" id="f3-perfil-mensaje" role="status" aria-atomic="true"></p>
+        <form class="f3-panel f3-alias-form" id="f3-alias-form" aria-labelledby="f3-alias-titulo" hidden>
+          <h2 id="f3-alias-titulo">Elige tu alias</h2>
+          <p id="f3-alias-ayuda">Inventa un apodo de 2 a 30 caracteres, como TorreVerde o Caballo Azul. Evita tu nombre y apellidos.</p>
+          <label for="f3-alias-campo">Tu alias</label>
+          <input id="f3-alias-campo" name="alias" type="text" minlength="2" maxlength="30" required
+                 autocomplete="off" spellcheck="false" autocapitalize="none" placeholder="TorreVerde" aria-describedby="f3-alias-ayuda">
+          <div class="f3-articulo-acciones">
+            <button class="button primary" id="f3-alias-guardar" type="submit">Guardar alias</button>
+            <button class="button secondary" id="f3-alias-cancelar" type="button" hidden>Cancelar</button>
+          </div>
+        </form>
+        <div id="f3-perfil-detalles" hidden>
+          <div class="f3-identidad">
+            <div class="f3-avatar chess" id="f3-avatar" aria-hidden="true">♙</div>
+            <div>
+              <h2 id="f3-alias"></h2>
+              <p id="f3-grupo"></p>
+              <button class="button secondary f3-alias-editar" id="f3-alias-editar" type="button" aria-controls="f3-alias-form" aria-expanded="false">Cambiar alias</button>
+            </div>
+          </div>
+          <dl id="f3-estadisticas" class="f3-estadisticas"></dl>
+          <div class="f3-columnas">
+            <section class="f3-panel" aria-labelledby="f3-progreso-titulo">
+              <h2 id="f3-progreso-titulo">Mi progreso</h2>
+              <dl id="f3-progreso" class="f3-progreso"></dl>
+              <a class="button primary" href="academia/">Abrir mi Academia <span aria-hidden="true">→</span></a>
+            </section>
+            <section class="f3-panel" aria-labelledby="f3-insignias-titulo">
+              <h2 id="f3-insignias-titulo">Mis insignias</h2>
+              <ul id="f3-insignias" class="f3-insignias"></ul>
+            </section>
+          </div>
+          <section class="f3-inventario" aria-labelledby="f3-inventario-titulo">
+            <div class="f3-inventario-cabecera">
+              <h2 id="f3-inventario-titulo">Mis artículos</h2>
+              <a class="button secondary" href="#tienda">Ir a la tienda <span aria-hidden="true">→</span></a>
+            </div>
+            <div id="f3-inventario-lista" class="f3-catalogo"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="tienda" class="vista inner-page contenedor f3-alumno" data-nav="mi-espacio" hidden>
+      <a class="back-link" href="#inicio"><span aria-hidden="true">←</span> Inicio</a>
+      <h1 tabindex="-1">Tienda</h1>
+      <p class="page-lead">Explora los artículos y personaliza tu perfil con Monedas de Jaque.</p>
+      <p class="f3-nota"><span aria-hidden="true">✦</span> Acceso del grupo piloto</p>
+      <div class="phase-panel" id="f3-tienda-sin-acceso">
+        <h2>Accede a tu perfil</h2>
+        <p>Entra con tu código para abrir la tienda.</p>
+        <a class="button primary" href="#inicio" data-f3-acceso>Elegir un acceso</a>
+      </div>
+      <div id="f3-tienda-contenido" hidden>
+        <p class="feedback" id="f3-tienda-mensaje" role="status" aria-atomic="true"></p>
+        <div class="f3-saldo">
+          <span><span class="f3-moneda" aria-hidden="true">◆</span> <strong id="f3-tienda-saldo"></strong> Monedas de Jaque</span>
+          <a href="#perfil">Ver mi perfil <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="f3-tienda-layout">
+          <div>
+            <label class="f3-filtro">Artículos
+              <select id="f3-categoria">
+                <option value="">Todas las categorías</option>
+              </select>
+            </label>
+            <div id="f3-tienda-catalogo" class="f3-catalogo"></div>
+          </div>
+          <section class="f3-panel f3-vista-previa" aria-labelledby="f3-vista-previa-titulo">
+            <h2 id="f3-vista-previa-titulo" tabindex="-1">Vista previa</h2>
+            <div id="f3-vista-previa-contenido"></div>
+            <div id="f3-vista-previa-acciones" class="f3-articulo-acciones"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <noscript><p class="contenedor">Activa JavaScript en tu navegador para abrir los perfiles.</p></noscript>
+  </main>
+  <footer class="site-footer"><div class="contenedor footer-inner">
+    <span><strong>Aula de Jaque</strong> · CEIP Vicente Tofiño</span>
+    <span>Perfiles del grupo piloto</span>
+  </div></footer>
+</body>
+</html>

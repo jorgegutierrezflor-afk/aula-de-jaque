@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Academia de ajedrez · Aula de Jaque</title>
+  <link rel="stylesheet" href="../estilos.css">
+  <link rel="stylesheet" href="../portada.css">
+  <link rel="stylesheet" href="academia.css">
+  <script src="academia-contenido.js" defer></script>
+  <script src="academia-ampliacion.js" defer></script>
+  <script src="academia.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="contenedor header-inner">
+      <a class="brand" href="../#perfil">
+        <span class="brand-icon chess" aria-hidden="true">♞</span>
+        <span><strong>Aula de Jaque</strong><small>CEIP Vicente Tofiño</small></span>
+      </a>
+    </div>
+  </header>
+  <main id="contenido" tabindex="-1">
+    <div class="contenedor">
+      <p class="feedback" id="academia-estado" role="status" aria-atomic="true"></p>
+      <button class="button secondary" id="academia-recargar" type="button" hidden>Volver a intentar</button>
+      <noscript><p>Activa JavaScript en tu navegador para practicar en la Academia.</p></noscript>
+    </div>
+    <section id="aprende" class="vista inner-page contenedor" hidden>
+      <div id="academia-portada">
+        <a class="back-link" href="../#perfil"><span aria-hidden="true">←</span> Mi perfil</a>
+        <div class="academia-cabecera">
+          <div>
+            <h1 tabindex="-1">Academia de <em>ajedrez</em></h1>
+            <p class="page-lead">Del tablero a tu primera partida. Practica cada regla a tu ritmo.</p>
+          </div>
+          <div class="academia-avance">
+            <label for="academia-progreso">Avance de la Academia</label>
+            <p id="academia-progreso-texto">0 de 15 lecciones completadas</p>
+            <progress id="academia-progreso" max="15" value="0" aria-describedby="academia-progreso-texto"></progress>
+            <p class="academia-nota">Tu avance se guarda en tu perfil. Entra con tu código desde cualquier ordenador para continuar.</p>
+            <p class="academia-insignia" id="academia-insignia" hidden><span aria-hidden="true">✦</span> Insignia «Primeros pasos» conseguida</p>
+            <p class="academia-insignia" id="academia-insignia-itinerario" hidden><span aria-hidden="true">✦</span> Insignia «Itinerario completado» conseguida</p>
+          </div>
+        </div>
+
+        <h2 class="academia-bloque-titulo" id="academia-primeros-pasos">Primeros pasos</h2>
+        <div class="academia-grid" role="group" aria-labelledby="academia-primeros-pasos">
+          <a class="module-card module-green academia-tarjeta" href="#aprende?leccion=tablero" data-leccion="tablero">
+            <span class="module-icon icon-board" aria-hidden="true"></span>
+            <span class="module-status" data-estado-leccion>Sin empezar</span>
+            <span class="module-name">1. El tablero</span>
+            <span class="module-description">Distingue casillas claras y oscuras y encuentra las esquinas.</span>
+            <span class="module-action">Abrir lección <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="module-card module-blue academia-tarjeta" href="#aprende?leccion=coordenadas" data-leccion="coordenadas">
+            <span class="module-icon" aria-hidden="true">a1</span>
+            <span class="module-status" data-estado-leccion>Sin empezar</span>
+            <span class="module-name">2. Las coordenadas</span>
+            <span class="module-description">Cruza una letra y un número para encontrar una casilla.</span>
+            <span class="module-action">Abrir lección <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="module-card module-orange academia-tarjeta" href="#aprende?leccion=piezas" data-leccion="piezas">
+            <span class="module-icon chess" aria-hidden="true">♞</span>
+            <span class="module-status" data-estado-leccion>Sin empezar</span>
+            <span class="module-name">3. Las piezas</span>
+            <span class="module-description">Reconoce el peón, la torre, el alfil, el caballo, la dama y el rey.</span>
+            <span class="module-action">Abrir lección <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+
+        <div id="academia-unidades-nuevas"></div>
+
+        <section class="academia-repaso" aria-labelledby="academia-repaso-titulo">
+          <h2 id="academia-repaso-titulo">Apuntes y minijuegos</h2>
+          <div class="tiles lesson-tiles">
+            <article class="tile tile-gold"><span class="tile-icon icon-board" aria-hidden="true"></span><h3 class="tile-title">El tablero</h3><p class="tile-desc">Tiene 8 filas y 8 columnas. Cada casilla tiene un nombre que empieza por la letra de su columna. Por ejemplo, e4 está en la columna e y la fila 4.</p><a class="tile-action" href="https://jorgegutierrezflor-afk.github.io/aula-de-jaque/#coordenadas">Practicar coordenadas <span aria-hidden="true">→</span></a></article>
+            <article class="tile tile-rose"><span class="tile-icon chess" aria-hidden="true">♞</span><h3 class="tile-title">El caballo</h3><p class="tile-desc">Se mueve en L. Cuenta dos casillas en línea recta y luego una hacia un lado. Puede saltar por encima de otras piezas.</p><a class="tile-action" href="https://jorgegutierrezflor-afk.github.io/aula-de-jaque/#caballo">Practicar con el caballo <span aria-hidden="true">→</span></a></article>
+            <article class="tile tile-sage"><span class="tile-icon chess" aria-hidden="true">♜</span><h3 class="tile-title">La torre</h3><p class="tile-desc">Se mueve por una sola fila o columna. Puede recorrer varias casillas seguidas si el camino está libre.</p><a class="tile-action" href="https://jorgegutierrezflor-afk.github.io/aula-de-jaque/#torre">Practicar con la torre <span aria-hidden="true">→</span></a></article>
+          </div>
+        </section>
+      </div>
+
+      <div id="academia-leccion" hidden>
+        <a class="back-link" href="#aprende"><span aria-hidden="true">←</span> Todas las lecciones</a>
+        <h1 id="academia-titulo" tabindex="-1"></h1>
+        <p class="page-lead" id="academia-intro"></p>
+        <div class="academia-explicacion" id="academia-explicacion"></div>
+
+        <div class="academia-actividades">
+          <section class="academia-panel" aria-labelledby="academia-ejemplo-titulo">
+            <h2 id="academia-ejemplo-titulo">Prueba guiada</h2>
+            <p class="academia-consigna" id="academia-ejemplo-consigna"></p>
+            <div class="academia-cuerpo" id="academia-ejemplo-cuerpo"></div>
+            <p class="feedback" id="academia-ejemplo-mensaje" role="status" aria-atomic="true"></p>
+          </section>
+
+          <section class="academia-panel" id="academia-practica" aria-labelledby="academia-practica-titulo">
+            <h2 id="academia-practica-titulo">Te toca</h2>
+            <p class="academia-ronda" id="academia-ronda"></p>
+            <p class="academia-consigna" id="academia-pregunta"></p>
+            <div class="academia-cuerpo" id="academia-respuestas"></div>
+            <p class="feedback" id="academia-mensaje" role="status" aria-atomic="true"></p>
+            <button class="button primary" type="button" id="academia-siguiente" hidden>Siguiente reto <span aria-hidden="true">→</span></button>
+          </section>
+
+          <section class="academia-panel academia-resultado" id="academia-resultado" hidden>
+            <span class="academia-estrella" aria-hidden="true">✦</span>
+            <h2 id="academia-resultado-titulo" tabindex="-1">¡Lección completada!</h2>
+            <p id="academia-resultado-texto"></p>
+            <div class="academia-acciones">
+              <a class="button primary" id="academia-proxima" href="#aprende">Volver a la academia</a>
+              <button class="button secondary" type="button" id="academia-repetir">Repetir la práctica</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

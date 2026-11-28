@@ -232,21 +232,3 @@
   font-size: 1.83rem;
   line-height: 1;
 }
-
-.academia-bloque { margin-top: 32px; }
-.academia-bloque-titulo,
-.academia-bloque > h2 {
-  margin-top: 26px;
-  color: var(--panel-ink);
-  font-size: clamp(1.55rem, 3vw, 2rem);
-}
-.academia-bloque-titulo + .academia-grid,
-.academia-bloque > .academia-grid { margin-top: 11px; }
-.academia-tablero .academia-pieza-tablero { pointer-events: none; }
-.academia-casilla-estatica { cursor: default; }
-.academia-casilla-con-pieza .academia-marca {
-  position: absolute;
-  right: 2px;
-  bottom: 2px;
-}
-#arcade-catalogo { margin-top: 13px; }

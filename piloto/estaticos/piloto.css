@@ -1,0 +1,48 @@
+.fase3-cabecera { min-height: 71px; }
+.fase3-menu { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; font-weight: 750; }
+.fase3-menu a { display: inline-flex; align-items: center; min-height: 44px; color: var(--purple-dark); }
+.fase3-menu a[aria-current] { text-decoration: underline; text-underline-offset: 5px; }
+.fase3-menu .button { min-height: 43px; }
+.fase3-aviso { background: #f1eafa; border-bottom: 1px solid #ddd1ee; color: #3f2d64; }
+.fase3-aviso > div { display: flex; flex-wrap: wrap; gap: 4px 13px; padding-block: 8px; font-size: .91rem; }
+#fase3-mensaje:not(:empty) { margin: 9px 0 0; min-height: 0; }
+.fase3-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(145px, 30%);
+  align-items: center;
+  gap: 17px;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(21px, 5vw, 49px);
+  border-radius: 25px;
+  background: linear-gradient(130deg,#172440,#352457);
+  color: #fff9ec;
+}
+.fase3-hero h1 { font-size: clamp(2.5rem, 5.9vw, 5.15rem); color: #fff9ec; }
+.fase3-hero h1 em { color: #f9d977; }
+.fase3-hero p { margin-top: 12px; max-width: 47ch; color: #ebe4f9; font-size: clamp(1rem, 2vw, 1.17rem); }
+.fase3-retorno { display: inline-flex; align-items: center; min-height: 44px; margin-top: 12px; font-weight: 750; text-decoration: underline; text-underline-offset: 4px; }
+.fase3-hero-arte { display: grid; grid-template-columns: 1fr 1fr; align-items: center; justify-items: center; gap: 6px; }
+.fase3-ficha { display: grid; place-items: center; width: clamp(62px, 9vw, 118px); aspect-ratio: 1; border-radius: 19px; font-weight: 800; font-size: clamp(2.5rem, 5vw, 4.1rem); line-height: 1; box-shadow: 0 6px 0 #150d2e5e; }
+.fase3-ficha-lila { background: #e5d5f7; color: #583694; transform: rotate(-10deg); }
+.fase3-ficha-oro { background: #f9d977; color: #76521c; transform: rotate(12deg) translateY(15%); }
+.fase3-ficha-verde { grid-column: 1 / -1; background: #dcefe7; color: #275e4c; transform: rotate(-4deg) translateX(-23%); }
+.fase3-accesos { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 15px; margin-top: 19px; }
+.fase3-card { min-width: 0; padding: clamp(16px, 3vw, 27px); border: 1px solid var(--panel-rule); border-radius: 18px; background: #fff; }
+.fase3-card h2 { margin: 7px 0; font-size: clamp(1.47rem, 2.8vw, 2.17rem); color: var(--panel-ink); }
+.fase3-card p { margin-bottom: 13px; color: var(--panel-muted); }
+.fase3-icono { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 11px; background: #eee4fb; color: #59368a; font-size: 1.8rem; }
+.fase3-form { display: flex; flex-wrap: wrap; align-items: end; gap: 8px; }
+.fase3-campo { display: grid; gap: 5px; flex: 1 0 165px; min-width: 0; font-weight: 750; }
+.fase3-campo input { width: 100%; min-width: 0; min-height: 48px; padding: 8px 11px; border: 1px solid #bdb3ce; border-radius: 10px; background: #fff; font: inherit; }
+.fase3-campo input:focus-visible { outline: 3px solid #583694; }
+.fase3-alumno-demo { margin-top: 11px; }
+.fase3-sesion { max-width: 38rem; margin-top: 19px; }
+@media (max-width: 650px) {
+  .fase3-cabecera { padding-block: 10px; align-content: center; }
+  .fase3-hero { grid-template-columns: minmax(0,1fr); }
+  .fase3-hero-arte { display: none; }
+  .fase3-accesos { grid-template-columns: minmax(0,1fr); }
+}
+
+.fase3-accesos { grid-template-columns: minmax(0, 540px); }

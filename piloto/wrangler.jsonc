@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aula-de-jaque-perfiles",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-06-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": false },
+  "vars": { "AULA_ACTIVAR": "1" },
+  "assets": {
+    "directory": "./estaticos",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aula-de-jaque-piloto",
+      "database_id": "9e1f74cd-94ad-4bc0-b401-790c196a6e24"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "AULA_LOGIN_LIMIT",
+      "namespace_id": "198603",
+      "simple": { "limit": 600, "period": 60 }
+    }
+  ]
+}

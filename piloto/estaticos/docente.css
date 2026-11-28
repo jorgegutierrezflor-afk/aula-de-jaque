@@ -1,0 +1,143 @@
+#gestion-docente { --docente-acento: #614186; --docente-suave: #f2edf8; }
+.docente-panel {
+  margin-top: 16px;
+  padding: clamp(15px, 4vw, 27px);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  background: var(--card);
+}
+.docente-panel h2, .docente-barra h2 { font-size: clamp(1.4rem, 3.5vw, 1.95rem); }
+.docente-panel > p { margin-top: 7px; color: var(--muted); }
+.docente-panel > button { margin-top: 15px; }
+.docente-estado {
+  min-height: 1.5em;
+  margin-top: 10px;
+  color: var(--muted);
+}
+.docente-estado[data-tone="error"], .docente-estado[data-tone="ok"] {
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+.docente-estado[data-tone="error"] { background: #f9e5d9; border-color: #edcdb8; color: #713926; }
+.docente-estado[data-tone="ok"] { background: #e7efda; border-color: #c9d6b9; color: #2d5027; }
+.docente-barra, .docente-acciones, .docente-codigo-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.docente-barra { justify-content: space-between; }
+#gestion-docente label { font-weight: 800; }
+#gestion-docente input, #gestion-docente select, #gestion-docente textarea {
+  min-height: 46px;
+  min-width: 0;
+  padding: 7px 9px;
+  border: 1px solid #ae9ebc;
+  border-radius: 8px;
+  background: #fffefa;
+  color: var(--ink);
+  font: inherit;
+}
+#gestion-docente input:focus-visible, #gestion-docente select:focus-visible, #gestion-docente textarea:focus-visible {
+  outline: 3px solid var(--docente-acento);
+  outline-offset: 2px;
+}
+.docente-campo { display: grid; gap: 5px; max-width: 355px; margin-top: 11px; }
+.docente-aliases {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+.docente-alias {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 11px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+}
+.docente-alias h4 { margin: 0; font-size: 1.1rem; overflow-wrap: anywhere; }
+.docente-alias p { margin: 4px 0 0; color: var(--muted); font-size: .91rem; }
+.docente-codigo {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid #d8c9e6;
+  border-radius: 11px;
+  background: var(--docente-suave);
+}
+.docente-codigo h3 { margin: 0 0 6px; }
+.docente-codigo p { margin: 0 0 7px; color: var(--muted); }
+.docente-copia-manual { max-width: 100%; }
+.docente-copia-manual textarea { width: 100%; resize: vertical; }
+.docente-codigos-curso { margin-top: 16px; }
+.docente-codigos-curso h4 { margin: 0; overflow-wrap: anywhere; }
+.docente-lista-codigos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.docente-lista-codigos li {
+  display: grid;
+  gap: 3px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #fff;
+}
+.docente-lista-codigos code {
+  font-size: 1rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.docente-lista-codigos span { color: var(--muted); }
+.docente-listado-titulo { margin-top: 20px; }
+.docente-cuenta-accesos { margin-top: 8px; color: var(--muted); }
+#docente-hoja-impresion { display: none; }
+.docente-ajustes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 12px;
+}
+.docente-importes { display: grid; gap: 7px; margin-top: 11px; }
+.docente-importe {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(70px, 110px);
+  align-items: center;
+  gap: 8px;
+}
+#gestion-docente button:disabled { cursor: default; opacity: .64; }
+@media (max-width: 740px) {
+  .docente-ajustes { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}
+
+.docente-lote {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 11px;
+  background: var(--docente-suave);
+}
+.docente-lote h3 { margin: 0 0 6px; }
+.docente-lote p { color: var(--muted); }
+.docente-lote-controles { display: flex; align-items: end; flex-wrap: wrap; gap: 8px; }
+.docente-lote-controles input { max-width: 9rem; }
+.docente-lote-controles .docente-curso { flex: 1 1 180px; max-width: 290px; }
+.docente-lote-controles .docente-curso input { max-width: none; }
+
+#docente-confirmacion[data-destructiva] { background: #faebe4; border-color: #e8bba5; }
+.docente-acciones .docente-eliminar { color: #853c26; }
+
+@media print {
+  #docente-codigo, body.docente-modo-impresion > :not(#docente-hoja-impresion) { display: none !important; }
+  body.docente-modo-impresion { margin: 0; background: #fff; color: #000; }
+  #docente-hoja-impresion { display: block; }
+  #docente-hoja-impresion h1 { margin: 0 0 10px; font-size: 16pt; color: #000; }
+  #docente-hoja-impresion h2 { margin: 0; font-size: 12pt; break-after: avoid; }
+  #docente-hoja-impresion .docente-lista-codigos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #docente-hoja-impresion li { border: 1px dashed #666; padding: 5px 8px; break-inside: avoid; }
+}

@@ -21,6 +21,8 @@
   <script src="arcade.js" defer></script>
   <script src="ia-motor.js" defer></script>
   <script src="ia.js" defer></script>
+  <script src="configuracion-piloto.js" defer></script>
+  <script src="enlace-piloto.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -50,6 +52,7 @@
             <div class="hero-actions">
               <a class="button primary" href="#minijuegos">Empezar a jugar <span aria-hidden="true">→</span></a>
               <a class="button secondary" href="#aprende">Aprender desde cero</a>
+              <a class="button secondary" href="#perfil" data-piloto-destino="perfil" hidden>Entrar con mi código</a>
             </div>
           </div>
           <figure class="hero-art">
@@ -141,14 +144,14 @@
         <section class="module-section" id="mi-espacio" data-home-group aria-labelledby="espacio-titulo">
           <h2 id="espacio-titulo" tabindex="-1">Mi espacio</h2>
           <div class="module-grid module-grid-two">
-            <a class="module-card" href="#perfil" data-module data-availability="pendiente">
+            <a class="module-card" href="#perfil" data-module data-availability="pendiente" data-piloto-tarjeta="perfil">
               <span class="module-icon chess" aria-hidden="true">♙</span>
               <span class="module-status">Pendiente</span>
               <span class="module-name">Mi perfil</span>
               <span class="module-description">Tu avatar, tus insignias y lo que has aprendido.</span>
               <span class="module-action">Ver lo previsto <span aria-hidden="true">→</span></span>
             </a>
-            <a class="module-card module-gold" href="#tienda" data-module data-availability="pendiente">
+            <a class="module-card module-gold" href="#tienda" data-module data-availability="pendiente" data-piloto-tarjeta="tienda">
               <span class="module-icon" aria-hidden="true">✦</span>
               <span class="module-status">Pendiente</span>
               <span class="module-name">Tienda</span>
@@ -537,20 +540,32 @@
     <section id="perfil" class="vista inner-page contenedor" data-nav="mi-espacio" hidden>
       <a class="back-link" href="#mi-espacio"><span aria-hidden="true">←</span> Mi espacio</a>
       <h1 tabindex="-1">Mi <em>perfil</em></h1>
-      <div class="phase-panel">
+      <div class="phase-panel" data-piloto-pendiente>
         <p class="module-status">Pendiente · Fase 3</p>
         <h2>Consulta lo que vas aprendiendo</h2>
         <p>Tu perfil reunirá el avatar, el progreso en la academia y las insignias. El profesorado gestionará el acceso cuando el centro lo autorice.</p>
+      </div>
+      <div class="phase-panel" data-piloto-activo hidden>
+        <p class="module-status">Grupo piloto</p>
+        <h2>Entra con tu código</h2>
+        <p>Continúa tus lecciones de la Academia y consulta tus Monedas de Jaque.</p>
+        <a class="button primary" data-piloto-destino="perfil" href="#perfil" hidden>Abrir mi perfil <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
     <section id="tienda" class="vista inner-page contenedor" data-nav="mi-espacio" hidden>
       <a class="back-link" href="#mi-espacio"><span aria-hidden="true">←</span> Mi espacio</a>
       <h1 tabindex="-1">Tienda</h1>
-      <div class="phase-panel">
+      <div class="phase-panel" data-piloto-pendiente>
         <p class="module-status">Pendiente · Fase 3</p>
         <h2>Personaliza tu tablero y tu avatar</h2>
         <p>Podrás conseguir artículos decorativos con las Monedas de Jaque que ganes al aprender y participar.</p>
+      </div>
+      <div class="phase-panel" data-piloto-activo hidden>
+        <p class="module-status">Grupo piloto</p>
+        <h2>Personaliza tu perfil</h2>
+        <p>Entra con el código de Aula de Jaque y elige artículos con tus monedas virtuales.</p>
+        <a class="button primary" data-piloto-destino="tienda" href="#tienda" hidden>Abrir la tienda <span aria-hidden="true">→</span></a>
       </div>
     </section>
 

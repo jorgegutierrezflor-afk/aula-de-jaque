@@ -1,0 +1,8 @@
+{
+  "name": "aula-de-jaque-perfiles",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "devDependencies": { "wrangler": "4.168.0" }
+}
